@@ -1,0 +1,12 @@
+.DS_Store
+.sass-cache
+assets/src/js/config.json
+assets/dev
+assets/prod
+assets/vendor
+node_modules
+web/css
+web/js
+
+# ignore compiled files
+assets/src/css/*.css
