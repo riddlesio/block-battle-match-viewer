@@ -1,7 +1,11 @@
 (function (undefined) {
     const
-        AIGames         = require('AIGames'),
+        _               = require('lodash'),
+        $               = require('jquery'),
+        AIGames         = require('aigames'),
         PlaybackEvent   = AIGames.event.PlaybackEvent,
+        CellType        = require('../enum/CellType.js'), // er moet .js achter?
+        Parser          = require('../io/Parser.js'),
 
         // To be removed for production
         _defaults       = require('../data/gameDefaults.json'),
@@ -21,17 +25,15 @@
          * @param  {Object} options
          */
         construct: function (options) {
-
-            var self = this;
             
-            self.settings = _.merge(options, _defaults);
+            this.settings = _.merge(options, _defaults);
 
             // register event listeners
-            registerEventListeners(self);
+            registerEventListeners(this);
 
             // start up the game
-            self.setRoundNumber(0);
-            self.handleData(_dummyData);
+            this.setRoundNumber(0);
+            this.handleData(_dummyData);
         },
 
         /**
@@ -49,10 +51,14 @@
         handleData: function (data) {
 
             var moves;
+
+            this.settings = _.merge(this.settings, data.settings);
+            console.log(this.settings);
         
             moves = Parser.parseMoveSet(data);
 
             this.setMoves(moves);
+
             this.play();
         },
 
@@ -84,7 +90,7 @@
          */
         roundForward: function () {
 
-            if (this.maxRound == this.round)
+            if (this.settings.maxRound == this.round)
                 return;
 
             this.setRoundNumber(this.round + 1);
@@ -158,24 +164,28 @@
         },
 
         /**
-         * Renders the game
-         * @param  {Object} state
-         */
-        render: function () {
-
-            var state = Parser.parseState(this.round, this.roundMove, this.data, this.settings);
-
-            React.render(GameView(state), this.getDOMNode());
-        },
-
-        /**
          * Sets the round Number
          */
         setRoundNumber: function (round) {
 
             this.round = round;
             this.roundMove = 0;
-            this.drawnRound.attr({"text": "Round " + round});
+            // this.drawnRound.attr({"text": "Round " + round});
+        },
+
+        setMoves: function (moves) {
+
+            // set the moves in the movebox(es)
+        },
+
+        /**
+         * Renders the game
+         */
+        render: function () {
+
+            var state = Parser.parseState(this.round, this.roundMove, this.data, this.settings);
+
+            React.render(GameView(state), this.getDOMNode());
         },
     });
 
@@ -190,7 +200,7 @@
         PlaybackEvent.on(PlaybackEvent.FAST_FORWARD, context.roundForward, context);
         PlaybackEvent.on(PlaybackEvent.BACK, context.moveBackward, context);
         PlaybackEvent.on(PlaybackEvent.REWIND, context.roundBackward, context);
-    },
+    }
 
     /**
      * Release the event listeners
@@ -199,8 +209,8 @@
 
         PlaybackEvent.off(PlaybackEvent.FORWARD, context.moveForward, context);
         PlaybackEvent.off(PlaybackEvent.FAST_FORWARD, context.roundForward, context);
-        PlaybackEvent.off(PlaybackEvent.BACK context.moveBackward, context);
-        PlaybackEvent.off(PlaybackEvent.REWIND context.roundBackward, context);
+        PlaybackEvent.off(PlaybackEvent.BACK, context.moveBackward, context);
+        PlaybackEvent.off(PlaybackEvent.REWIND, context.roundBackward, context);
     }
 
     module.exports = TetrisBattle;

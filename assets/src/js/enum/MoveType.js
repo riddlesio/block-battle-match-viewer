@@ -1,9 +1,9 @@
-(function (window, undefined) {
+(function (undefined) {
     
     /**
      * MoveType contains constants to translate between game data and game logic
      */
-    const MoveType = {
+    const moveType = {
         DOWN: 'down',
         LEFT: 'left',
         RIGHT: 'right',
@@ -14,6 +14,5 @@
         NONE: ''
     };
 
-    module.exports = MoveType;
-
-}(window));
+    module.exports = moveType;
+}());

@@ -1,6 +1,6 @@
 (function (undefined) {
 
-    const CellType = {
+    const cellType = {
         I: "I",
         J: "J",
         L: "L",
@@ -12,6 +12,5 @@
         EMPTY: 0
     };
 
-    module.exports = CellType;
-
+    module.exports = cellType;
 }());

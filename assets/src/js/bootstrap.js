@@ -4,9 +4,12 @@
         AIGames      = require('aigames'),
         TetrisGame   = require('./game/TetrisGame');
 
+    var game;
+
     // Wraps the game for use on TheAIGames website
     // Takes care of setting up and destroying the competition namespace
-    AIGames.legacyWrapper(TetrisGame, {
+    // console.log(AIGames);
+    game = new TetrisGame({
         name: 'tetris-game',
         player: {
             // Determines whether they player's chrome should be displayed

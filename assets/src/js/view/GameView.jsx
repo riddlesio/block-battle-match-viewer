@@ -2,9 +2,12 @@
 
     const
         React       = require('react'),
-        createView  = require('omniscient');
+        createView  = require('omniscient'),
+        Grid        = require('./Grid.js');
 
-    module.exports = createView(function (data) {
+    var gameView;
+
+    gameView = createView(function (data) {
         /**
          * Data should have the following structure:
          * {
@@ -23,4 +26,6 @@
             </g>
         );
     });
+
+    module.exports = gameView;
 }());

@@ -5,8 +5,9 @@
         createView  = require('omniscient'),
         Cell        = require('./Cell');
 
+    var grid;
 
-    module.exports = createView(function (data) {
+    grid = createView(function (data) {
 
     	/**
     	 * Data should have the following structure:
@@ -16,4 +17,6 @@
     	 */
         return <g className="TetrisGame-grid">{ _.each(data.cells, Cell) }</g>;
     });
+
+    module.exports = grid;
 }());

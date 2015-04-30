@@ -4,7 +4,9 @@
         React      = require('react'),
         createView = require('omniscient');
 
-    module.exports = createView(function (data) {
+    var cell;
+
+    cell = createView(function (data) {
 
         /**
          * Data should have the following structure:
@@ -19,4 +21,6 @@
 
         return React.DOM.rect(data);
     });
+
+    module.exports = cell;
 }());
