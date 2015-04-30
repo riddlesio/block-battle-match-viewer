@@ -6,6 +6,14 @@ This package contains the frontend code for Tetris Battle.
 
 Just run `npm install`.
 
+### Asset compilation
+
+Run `gulp js && gulp sass && gulp deploy`
+
+### Testing
+
+Run `npm start` to start a test server on localhost port 8989. The test server uses the iFrame embed method and also serves dummy data..
+
 ## Application flow
 
 The game is bootstrapped in `assets/src/js/bootstrap.js`.
