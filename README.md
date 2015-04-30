@@ -1,36 +1,19 @@
-# Js Kickstarter
+# The AI Games - Tetris Battle Frontend
 
-This repository can be used to kickstart JavaScript Single Page Application development. The repository comes with a useful directory structure and a predefined package.json including inflect, Lodash, React and Nflux. Furthermore, the kickstarter comes with a gulp toolchain for SASS/Compass and Browserify out of the box.
+This package contains the frontend code for Tetris Battle. 
 
-## Installation
+## Setup
 
-This installation guide assumes gulp is installed and globally accessible.
+Just run `npm install`.
 
-Run the following commands:
+## Application flow
 
-```
-#!bash
+The game is bootstrapped in `assets/src/js/bootstrap.js`.
 
-git clone -b master --depth 1 git@bitbucket.org:nikovanmeurs/js-kickstarter.git
-cd js-kickstarter
-git remote remove origin
-npm install
-```
+### Data handling
 
-## Usage
+Data retrieval is managed by `AbstractGame`. Its implementation should take care of handling the data and managing the game loop.
 
-Js Kickstarter comes with a simple testing server. This server runs locally on port 8989 and can be started by running `npm start`.
+### Rendering
 
-### Asset deployment
-
-Assets can be compiled, minified and deployed by running the following commands:
-
-```
-#!bash
-
-gulp sass
-gulp js
-gulp deploy
-```
-
-Alternatively, Gulp can listen to changes and deploy automatically by running `gulp watch`.
+State rendering is initiated by calling the render method in TetrisGame. This method parses the current state by calling `Parser.parseState` and subsequently renders the state to the DOM by utilising [React](https://facebook.github.io/react/) and [Omniscient](http://omniscientjs.github.io/).
