@@ -8,7 +8,8 @@ const
     uglify      = require('gulp-uglifyjs'),
     prefix      = require('gulp-autoprefixer'),
     browserify  = require('browserify'),
-    reactify    = require('reactify'),
+    babelify    = require('babelify'),
+    // reactify    = require('reactify'),
     buffer      = require('vinyl-buffer'),
     sequence    = require('run-sequence'),
     source      = require('vinyl-source-stream'),
@@ -44,6 +45,7 @@ gulp.task('sass', function () {
 
 gulp.task('js:minify', function () {
     return gulp.src('./assets/dev/js/*')
+        .pipe(uglify)
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('./assets/prod/js/'))
         .pipe(notify({ message: 'Js Minified' }));
@@ -59,7 +61,7 @@ gulp.task('js:compile', function () {
     });
 
     stream = bundler
-        .transform(reactify)
+        .transform(babelify)
         .bundle();
 
     return stream
@@ -72,7 +74,7 @@ gulp.task('js:compile', function () {
 });
 
 gulp.task('js', function () {
-    sequence(/*'js:cache:warmup',*/ 'js:compile', 'js:minify');
+    sequence('js:compile', 'js:minify');
 });
 
 gulp.task('watch', function () {

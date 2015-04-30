@@ -6,7 +6,7 @@
         Cell        = require('./Cell');
 
 
-    module.exports = Component(function (data) {
+    module.exports = createView(function (data) {
 
     	/**
     	 * Data should have the following structure:

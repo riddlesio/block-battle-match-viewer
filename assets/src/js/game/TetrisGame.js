@@ -1,23 +1,30 @@
 (function (undefined) {
     const
-        Field = require('../Field'),
-        Player = require('../Player'),
-        CellType = require('../CellType'),
-        MoveType = require('../MoveType'),
-        ShapeType = require('../ShapeType'),
-        PlaybackEvent = require('aigames').event.PlaybackEvent,
-        _defaults  = require('../data/gameDefaults.json'),
-        _dummyData = require('../data/dummyData.json');
+        AIGames         = require('AIGames'),
+        PlaybackEvent   = AIGames.event.PlaybackEvent,
+
+        // To be removed for production
+        _defaults       = require('../data/gameDefaults.json'),
+        _dummyData      = require('../data/dummyData.json');
 
     var TetrisBattle;
      
+    /**
+     * TetrisBattle class
+     * @constructor
+     */
     TetrisBattle = AIGames.createGame({
 
+        /**
+         * TetrisBattle construct function
+         * Automatically executed when instantiating the TetrisBattle class
+         * @param  {Object} options
+         */
         construct: function (options) {
 
             var self = this;
             
-            self.settings = _.merge({}, options, _defaults);
+            self.settings = _.merge(options, _defaults);
 
             // register event listeners
             registerEventListeners(self);
@@ -27,12 +34,18 @@
             self.handleData(_dummyData);
         },
 
+        /**
+         * Cleans up anything which might cause memory leaks
+         */
         destroy: function () {
 
             releaseEventListeners(this);
         },
 
-        // This function should always be implemented
+        /**
+         * Parses the received data and starts the game loop
+         * @param  {Object} data
+         */
         handleData: function (data) {
 
             var moves;
@@ -44,7 +57,7 @@
         },
 
         /**
-         * Move forward handler
+         * Moves the game forward by one step
          */
         moveForward: function () {
 
@@ -67,7 +80,7 @@
         },
 
         /**
-         * Handles moving forward one round
+         * Moves the game forward by one round
          */
         roundForward: function () {
 
@@ -79,7 +92,7 @@
         },
 
         /**
-         * Move backward handler
+         * Moves the game backward by one step
          */
         moveBackward: function () {
 
@@ -92,7 +105,7 @@
         },
 
         /**
-         * Handles moving backward one round
+         * Moves the game backward by one round
          */
         roundBackward: function () {
 
