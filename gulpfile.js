@@ -45,7 +45,7 @@ gulp.task('sass', function () {
 
 gulp.task('js:minify', function () {
     return gulp.src('./assets/dev/js/*')
-        .pipe(uglify)
+        .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('./assets/prod/js/'))
         .pipe(notify({ message: 'Js Minified' }));

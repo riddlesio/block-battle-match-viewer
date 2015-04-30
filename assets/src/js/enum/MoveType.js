@@ -3,7 +3,7 @@
     /**
      * MoveType contains constants to translate between game data and game logic
      */
-    const moveType = {
+    const MoveType = {
         DOWN: 'down',
         LEFT: 'left',
         RIGHT: 'right',
@@ -14,5 +14,5 @@
         NONE: ''
     };
 
-    module.exports = moveType;
+    module.exports = MoveType;
 }());

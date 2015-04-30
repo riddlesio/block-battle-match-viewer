@@ -5,9 +5,9 @@
         createView  = require('omniscient'),
         Grid        = require('./Grid.js');
 
-    var gameView;
+    var GameView;
 
-    gameView = createView(function (data) {
+    GameView = createView(function (data) {
         /**
          * Data should have the following structure:
          * {
@@ -27,5 +27,5 @@
         );
     });
 
-    module.exports = gameView;
+    module.exports = GameView;
 }());

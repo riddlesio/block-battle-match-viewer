@@ -15,19 +15,34 @@ server = http.createServer(function (request, response) {
 			return;
 		}
 
-		// else serve index.html
-		fs.readFile([publicDir, 'index.html'].join(''), function (error, content) {
-	
-			if (!error) {
-				response.writeHead(200, { 'Content-Type': 'text/html' });
-				response.end(content, 'utf-8');
+		if (request.url.indexOf('/data/') !== -1) {
+			fs.readFile('./assets/src/js/data/dummyData.json', function (error, content) {
 
-				return;
-			}
+				if (!error) {
+					response.writeHead(200, { 'Content-Type': 'application/json' });
+					response.end(content, 'utf-8');
 
-			response.writeHead(500);
-			response.end();
-		});
+					return;			
+				}
+
+				response.writeHead(500);
+				response.end();
+			});
+		} else {
+			// else serve index.html
+			fs.readFile([publicDir, 'index.html'].join(''), function (error, content) {
+		
+				if (!error) {
+					response.writeHead(200, { 'Content-Type': 'text/html' });
+					response.end(content, 'utf-8');
+
+					return;
+				}
+
+				response.writeHead(500);
+				response.end();
+			});
+		}
 	});
 }).listen(8989);
 console.log("Server started 8989");

@@ -5,13 +5,14 @@
         AIGames     = require('aigames'),
         _           = require('lodash');
 
-    var parser;
+    var Parser;
 
-    parser = AIGames.createClass({
-
-        construct: function () {
-
-        },
+    // Parser is a singleton object, so no createClass is nessecary
+    /**
+     * Singleton containing several utility functions for data parsing
+     * @type {Object}
+     */
+    Parser = {
 
         parseMoveSet: function (data) {
             return [];
@@ -30,8 +31,8 @@
                 console.log(fieldString);
                 // continue here....
             });
-        },
-    });
+        }
+    };
 
-    module.exports = parser;
+    module.exports = Parser;
 }());

@@ -1,11 +1,12 @@
 (function (undefined) {
     const
-        _               = require('lodash'),
-        $               = require('jquery'),
-        AIGames         = require('aigames'),
-        PlaybackEvent   = AIGames.event.PlaybackEvent,
-        CellType        = require('../enum/CellType.js'), // er moet .js achter?
-        Parser          = require('../io/Parser.js'),
+        _                   = require('lodash'),
+        $                   = require('jquery'), // Waarom jQuery? Je hebt hier helemaal niks met de DOM te maken
+        AIGames             = require('aigames'),
+        PlaybackEvent       = AIGames.event.PlaybackEvent,
+        CellType            = require('../enum/CellType'), // er moet .js achter? a: nee, is nergens voor nodig
+        Parser              = require('../io/Parser'),
+        SimpleGameLoopMixin = require('../mixin/SimpleGameLoopMixin'),
 
         // To be removed for production
         _defaults       = require('../data/gameDefaults.json'),
@@ -25,15 +26,17 @@
          * @param  {Object} options
          */
         construct: function (options) {
+
+            var self = this;
             
-            this.settings = _.merge(options, _defaults);
+            self.settings = _.merge(options, _defaults);
 
             // register event listeners
-            registerEventListeners(this);
+            registerEventListeners(self);
 
             // start up the game
-            this.setRoundNumber(0);
-            this.handleData(_dummyData);
+            self.setRoundNumber(0);
+            // self.handleData(_dummyData);
         },
 
         /**
@@ -50,16 +53,21 @@
          */
         handleData: function (data) {
 
-            var moves;
+            var moves,
+                // Use self where this is used more than once
+                // "self" can be shortened by the minifier unlike "this"
+                self = this;
 
-            this.settings = _.merge(this.settings, data.settings);
-            console.log(this.settings);
+            // settings en data zijn twee heel verschillende dingen,
+            // die zou ik niet zomaar samen in 1 variabele stoppen
+            self.settings = _.merge(self.settings, data.settings);
+            console.log(self.settings);
         
             moves = Parser.parseMoveSet(data);
 
-            this.setMoves(moves);
-
-            this.play();
+            // Provided by AbstractGame
+            self.setMoves(moves);
+            self.play();
         },
 
         /**
@@ -68,20 +76,21 @@
         moveForward: function () {
 
             var i, 
-                nextRound = false;
+                nextRound = false,
+                self = this;
 
-            for (i = 0; i < this.players.length; i++) { // check if we need to go to the next round
-                if (this.roundMove >= this.players[i].history[this.round].length - 1) {
+            for (i = 0; i < self.players.length; i++) { // check if we need to go to the next round
+                if (self.roundMove >= self.players[i].history[self.round].length - 1) {
                     nextRound = true;
                     break;
                 }
             }
 
             if (nextRound) {
-                this.roundForward();
+                self.roundForward();
             } else {
-                this.roundMove++;
-                this.render();
+                self.roundMove++;
+                self.render();
             }
         },
 
@@ -90,11 +99,13 @@
          */
         roundForward: function () {
 
-            if (this.settings.maxRound == this.round)
+            var self = this;
+
+            if (self.settings.maxRound == self.round)
                 return;
 
-            this.setRoundNumber(this.round + 1);
-            this.render();
+            self.setRoundNumber(self.round + 1);
+            self.render();
         },
 
         /**
@@ -102,11 +113,13 @@
          */
         moveBackward: function () {
 
-            if (this.roundMove <= 0) {
-                this.roundBackward();
+            var self = this;
+
+            if (self.roundMove <= 0) {
+                self.roundBackward();
             } else {
-                this.roundMove--;
-                this.render();
+                self.roundMove--;
+                self.render();
             }
         },
 
@@ -116,27 +129,28 @@
         roundBackward: function () {
 
             var i, maxMove,
-                roundMove = 0;
+                roundMove   = 0,
+                self        = this;
 
-            if (this.round <= 0 && this.roundMove <= 0)
+            if (self.round <= 0 && self.roundMove <= 0)
                 return;
 
-            if (this.roundMove > 0) {
-                this.setRoundNumber(this.round);
+            if (self.roundMove > 0) {
+                self.setRoundNumber(self.round);
             } else {
-                this.setRoundNumber(this.round - 1);
+                self.setRoundNumber(self.round - 1);
 
-                for (i = 0; i < this.players.length; i++) { // set moveRound to maximum for this round
-                    maxMove = this.players[i].history[this.round].length - 1;
+                for (i = 0; i < self.players.length; i++) { // set moveRound to maximum for this round
+                    maxMove = self.players[i].history[self.round].length - 1;
                     if (roundMove < maxMove) {
                         roundMove = maxMove;
                     }
                 }
 
-                this.roundMove = roundMove;
+                self.roundMove = roundMove;
             }
 
-            this.render();
+            self.render();
         },
 
         /**
@@ -173,19 +187,15 @@
             // this.drawnRound.attr({"text": "Round " + round});
         },
 
-        setMoves: function (moves) {
-
-            // set the moves in the movebox(es)
-        },
-
         /**
          * Renders the game
          */
         render: function () {
 
-            var state = Parser.parseState(this.round, this.roundMove, this.data, this.settings);
+            var self  = this,
+                state = Parser.parseState(self.round, self.roundMove, self.data, self.settings);
 
-            React.render(GameView(state), this.getDOMNode());
+            React.render(GameView(state), self.getDOMNode());
         },
     });
 

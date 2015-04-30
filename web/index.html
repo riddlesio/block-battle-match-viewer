@@ -2,12 +2,45 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../assets/dev/css/TetrisGame.css">
-	<title>JS Kickstarter</title>
+	<title>Index</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		body {
+			margin: 0;
+		}
+
+		#player {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+
+			border: none;
+		}
+
+		.u-wrapper {
+			max-width: 960px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.u-warlight2Ratio {
+			position: relative;
+		}
+
+		.u-warlight2Ratio:before {
+			display: block;
+			content: "";
+			width: 100%;
+			padding-top: calc(588 / 1000 * 100%);
+		}
+	</style>
 </head>
 <body>
-	<h1>Kickstart your JavaScript project</h1>
-	<p>If you're reading this you've successfully set up your JavaScript/React project using the JS Kickstarter. Replace this with anything you like!</p>
-	<script src="../assets/dev/js/app.js"></script>
+	<div class="u-wrapper u-warlight2Ratio">
+		<iframe id="player" src="./player.html"></iframe>
+	</div>
 </body>
 </html>

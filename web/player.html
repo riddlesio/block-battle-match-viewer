@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="/css/TetrisGame.css">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+
+			background: black;
+			font-size: 62.5%;
+		}
+
+		.GamePlayer {
+			width: 100vw;
+			height: 100vh;
+
+			position: relative;
+			overflow: hidden;
+		}
+
+		.GamePlayer-chrome {
+			min-height: 4rem;
+			width: 100%;
+
+			position: absolute;
+			bottom: 0;
+
+			background: rgba(0,0,0,0.65);
+		}
+
+		.GamePlayer-view {
+
+			width: 100%;
+			height: 100%;
+
+			background: url('http://theaigames.com/img/background-warlight2.png');
+			background-size: cover;
+		}
+
+		.u-row {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.u-grow {
+			display: flex;
+			flex-grow: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="GamePlayer">
+		<div class="GamePlayer-chrome u-row">
+			<div class="GamePlayer-viewToggle u-row">
+				<label class="GamePlayer-label"><input type="radio" class="GamePlayer-viewOption" name="view" value="1" checked>1</label>
+				<label class="GamePlayer-label"><input type="radio" class="GamePlayer-viewOption" name="view" value="2">2</label>
+				<label class="GamePlayer-label"><input type="radio" class="GamePlayer-viewOption" name="view" value="3">3</label>
+			</div>
+			<button class="button GamePlayer-button GamePlayer-playButton">Play</button>
+			<button class="button GamePlayer-button GamePlayer-pauseButton">Pause</button>
+			<button class="button GamePlayer-button GamePlayer-nextButton">Next</button>
+			<button class="button GamePlayer-button GamePlayer-prevButton">Prev</button>
+			<div class="u-grow"></div>
+			<input type="range" min="0" max="100">
+		</div>
+		<svg class="GamePlayer-view" viewBox="0 0 1515 890" preserveAspectRatio="xMidYMid meet">
+		</svg>
+	</div>
+	<script src="/js/app.js"></script>
+</body>
+</html>
