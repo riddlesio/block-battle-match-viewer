@@ -2,7 +2,9 @@
 
     const
         React      = require('react'),
-        createView = require('omniscient');
+        createView = require('omniscient'),
+        classNames = require('classnames'),
+        cellType   = require('../enum/CellType');
 
     var Cell;
 
@@ -15,12 +17,37 @@
          *    y: Number,
          *    width: Number,
          *    height: Number,
-         *    className: String
+         *    cellType: String
          * }
          */
 
-        return React.DOM.rect(data);
+        var className,
+            { x, y, width, height, cellType } = data;
+
+        className = createClassName(cellType);
+
+        return React.DOM.rect({ x, y, width, height, className });
     });
+
+    // Private functions
+
+    /**
+     * Creates a className string based on the passed cellType
+     * @param  {String} cellType A value from enum/CellType
+     * @return {String}
+     */
+    function createClassName (cellType) {
+
+        var element  = 'TetrisGame-cell',
+            modifier = `TetrisGame-cell--${cellType}`;
+
+        var c = classNames({
+            [element]: true,
+            [modifier]: true
+        });
+
+        return c;
+    }
 
     module.exports = Cell;
 }());

@@ -1,5 +1,5 @@
 {
-  "name": "js-kickstart",
+  "name": "tetris-battle",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -25,8 +25,11 @@
   },
   "dependencies": {
     "aigames": "git+ssh://git@bitbucket.org:nikovanmeurs/aigames.git#master",
+    "classnames": "^2.1.0",
     "inflect": "^0.3.0",
+    "jquery": "^2.1.4",
     "lodash": "~3.0.0",
-    "jquery": "^2.1.4"
+    "omniscient": "^3.1.0",
+    "react": "^0.13.2"
   }
 }

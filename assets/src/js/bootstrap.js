@@ -8,7 +8,7 @@
 
     // Wraps the game for use on TheAIGames website
     // Takes care of setting up and destroying the competition namespace
-    // console.log(AIGames);
+    // AIGames.util.legacyWrapper(TetrisGame, {
     game = new TetrisGame({
         name: 'tetris-game',
         player: {

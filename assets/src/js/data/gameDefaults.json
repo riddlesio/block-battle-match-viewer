@@ -22,8 +22,10 @@ _defaults = {
     "field": {
         "width": 10,
         "height": 20,
-        "cellWidth": 35,
-        "cellHeight": 35
+        "cell": {
+            "width": 35,
+            "height": 35
+        }
     },
     "boxHeight": 630,
     "canvasWidth": 900,

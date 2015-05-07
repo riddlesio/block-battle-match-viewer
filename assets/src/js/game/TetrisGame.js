@@ -1,16 +1,19 @@
 (function (undefined) {
     const
         _                   = require('lodash'),
-        $                   = require('jquery'), // Waarom jQuery? Je hebt hier helemaal niks met de DOM te maken
+        React               = require('react'),
         AIGames             = require('aigames'),
         PlaybackEvent       = AIGames.event.PlaybackEvent,
         CellType            = require('../enum/CellType'), // er moet .js achter? a: nee, is nergens voor nodig
         Parser              = require('../io/Parser'),
         SimpleGameLoopMixin = require('../mixin/SimpleGameLoopMixin'),
+        StateMixin          = require('../mixin/StateMixin'),
+        GameView            = require('../view/GameView.jsx'),
+
+        _defaults           = require('../data/gameDefaults.json'),
 
         // To be removed for production
-        _defaults       = require('../data/gameDefaults.json'),
-        _dummyData      = require('../data/dummyData.json');
+        _dummyData          = require('../data/dummyData.json');
 
     var TetrisBattle;
      
@@ -33,10 +36,6 @@
 
             // register event listeners
             registerEventListeners(self);
-
-            // start up the game
-            self.setRoundNumber(0);
-            // self.handleData(_dummyData);
         },
 
         /**
@@ -53,21 +52,29 @@
          */
         handleData: function (data) {
 
-            var moves,
+            var currentState,
+                moves,
+                settings,
+                states,
                 // Use self where this is used more than once
                 // "self" can be shortened by the minifier unlike "this"
                 self = this;
 
+            self.settings = _.merge(self.settings, data.settings);  
+            currentState  = 0;
+
             // settings en data zijn twee heel verschillende dingen,
             // die zou ik niet zomaar samen in 1 variabele stoppen
-            self.settings = _.merge(self.settings, data.settings);
-            console.log(self.settings);
-        
-            moves = Parser.parseMoveSet(data);
+
+            moves  = Parser.parseMoveSet(data);
+            states = Parser.parseStates(data, self.settings);
+
+            self.states = states;
 
             // Provided by AbstractGame
-            self.setMoves(moves);
-            self.play();
+            self//.setMoves(moves)
+                .setState({ currentState })
+                .play();
         },
 
         /**
@@ -75,22 +82,12 @@
          */
         moveForward: function () {
 
-            var i, 
-                nextRound = false,
-                self = this;
+            var self         = this,
+                { currentState } = self.getState();
 
-            for (i = 0; i < self.players.length; i++) { // check if we need to go to the next round
-                if (self.roundMove >= self.players[i].history[self.round].length - 1) {
-                    nextRound = true;
-                    break;
-                }
-            }
+            if (currentState !== self.states.length - 1) {
 
-            if (nextRound) {
-                self.roundForward();
-            } else {
-                self.roundMove++;
-                self.render();
+                self.setState({ currentState: currentState + 1 });
             }
         },
 
@@ -99,13 +96,18 @@
          */
         roundForward: function () {
 
-            var self = this;
+            var currentRound,
+                self = this,
+                states = self.states,
+                { currentState } = self.getState();
 
-            if (self.settings.maxRound == self.round)
-                return;
+            currentRound = states[currentState].round;
+            nextState    = _.findIndex(states, { round: currentRound + 1 });
 
-            self.setRoundNumber(self.round + 1);
-            self.render();
+            if (-1 !== nextState) {
+
+                self.setState({ currentState: nextState });
+            }
         },
 
         /**
@@ -113,13 +115,12 @@
          */
         moveBackward: function () {
 
-            var self = this;
+            var self = this,
+                { currentState } = self.getState();
 
-            if (self.roundMove <= 0) {
-                self.roundBackward();
-            } else {
-                self.roundMove--;
-                self.render();
+            if (currentState > 0) {
+
+                self.setState({ currentState: currentState - 1 });
             }
         },
 
@@ -128,40 +129,26 @@
          */
         roundBackward: function () {
 
-            var i, maxMove,
-                roundMove   = 0,
-                self        = this;
+            var currentRound,
+                self = this,
+                states = self.states,
+                { currentState } = self.getState();
 
-            if (self.round <= 0 && self.roundMove <= 0)
-                return;
+            currentRound = states[currentState].round;
+            nextState    = _.findIndex(states, { round: currentRound - 1 });
 
-            if (self.roundMove > 0) {
-                self.setRoundNumber(self.round);
-            } else {
-                self.setRoundNumber(self.round - 1);
+            if (-1 !== nextState) {
 
-                for (i = 0; i < self.players.length; i++) { // set moveRound to maximum for this round
-                    maxMove = self.players[i].history[self.round].length - 1;
-                    if (roundMove < maxMove) {
-                        roundMove = maxMove;
-                    }
-                }
-
-                self.roundMove = roundMove;
+                self.setState({ currentState: nextState });
             }
-
-            self.render();
         },
 
         /**
          * Starts the game loop
          */
         play: function () {
-            
-            /**
-             * TODO: Start the game loop
-             */
 
+            this.timer = window.setInterval(handleTimer, 200);
             PlaybackEvent.trigger(PlaybackEvent.PLAYING);
         },
 
@@ -170,36 +157,28 @@
          */
         pause: function () {
 
-            /**
-             * TODO: Stop the game loop
-             */
-
+            window.clearInterval(this.timer);
             PlaybackEvent.trigger(PlaybackEvent.PAUSED);
-        },
-
-        /**
-         * Sets the round Number
-         */
-        setRoundNumber: function (round) {
-
-            this.round = round;
-            this.roundMove = 0;
-            // this.drawnRound.attr({"text": "Round " + round});
         },
 
         /**
          * Renders the game
          */
-        render: function () {
+        render: function (state, prevState) {
 
-            var self  = this,
-                state = Parser.parseState(self.round, self.roundMove, self.data, self.settings);
+            var self   = this,
+                states = self.states,
+                { currentState } = state;
 
-            React.render(GameView(state), self.getDOMNode());
+            React.render(GameView(states[currentState]), self.getDOMNode());
         },
-    });
+    }, [StateMixin]);
 
     // Private functions
+
+    function handleTimer () {
+        PlaybackEvent.trigger(PlaybackEvent.FORWARD);
+    }
 
     /**
      * Register the event listeners

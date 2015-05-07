@@ -10,3 +10,44 @@
 .TetrisGame-currentRound {
 	font-size: 30px;
 }
+
+.TetrisGame-cell {
+	stroke: black;
+	stroke-width: 1px;
+}
+
+.TetrisGame-cell--3 {
+	fill: none;
+}
+
+.TetrisGame-cell--I {
+	fill: rgb(200, 0, 0);
+}
+
+.TetrisGame-cell--J {
+	fill: rgb(0, 200, 0);
+}
+
+.TetrisGame-cell--L {
+	fill: rgb(0, 0, 200);
+}
+
+.TetrisGame-cell--O {
+	fill: rgb(200, 200, 0);
+}
+
+.TetrisGame-cell--S {
+	fill: rgb(0, 200, 200);
+}
+
+.TetrisGame-cell--T {
+	fill: rgb(200, 0, 200);
+}
+
+.TetrisGame-cell--Z {
+	fill: rgb(0, 0, 0);
+}
+
+.TetrisGame-cell--0 {
+	fill: rgb(200, 200, 200);
+}
