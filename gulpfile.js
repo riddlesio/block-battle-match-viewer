@@ -17,7 +17,7 @@ const
 
 var vendors = [
     'lodash',
-    'omniscient'
+    'omniscient',
     'react',
     ''
 ]
