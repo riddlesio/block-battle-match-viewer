@@ -13,8 +13,27 @@
      */
     Parser = {
 
-        parseMoveSet: function (data) {
-            return [];
+        parseMoveSet: function (states) {
+
+            var round;
+
+            return _.chain(states)
+                .map(function (state, index) {
+
+                    var label,
+                        { round, players } = state;
+
+                    if (state.round === round) {
+                        return;
+                    }
+
+                    round = state.round;
+                    label = `Round ${round}`;
+
+                    return { label, value: index };
+                })
+                .compact()
+                .value();
         },
 
         parseState: function (round, roundMove, data, settings) {

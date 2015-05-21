@@ -15,6 +15,13 @@ const
     source      = require('vinyl-source-stream'),
     srcDir      = './assets/src/';
 
+var vendors = [
+    'lodash',
+    'omniscient'
+    'react',
+    ''
+]
+
 var handleError = function (error) {
     console.log(error);
 };
@@ -24,6 +31,10 @@ gulp.task('deploy', function () {
         .src('./assets/dev/**/*', { base: './assets/dev/' })
         .pipe(gulp.dest('./web/'))
         .pipe(notify({ message: 'CRM Deployed' }));
+});
+
+gulp.task('js:vendor', function () {
+
 });
 
 gulp.task('sass', function () {

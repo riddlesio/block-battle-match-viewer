@@ -52,20 +52,24 @@
 			display: flex;
 			flex-grow: 1;
 		}
+
+		.u-hidden {
+			display: none;
+		}
 	</style>
 </head>
 <body>
 	<div class="GamePlayer">
-		<div class="GamePlayer-chrome u-row">
-			<div class="GamePlayer-viewToggle u-row">
+		<div class="GamePlayer-chrome u-row u-hidden">
+			<div class="GamePlayer-viewToggle u-row u-hidden">
 				<label class="GamePlayer-label"><input type="radio" class="GamePlayer-viewOption" name="view" value="1" checked>1</label>
 				<label class="GamePlayer-label"><input type="radio" class="GamePlayer-viewOption" name="view" value="2">2</label>
 				<label class="GamePlayer-label"><input type="radio" class="GamePlayer-viewOption" name="view" value="3">3</label>
 			</div>
-			<button class="button GamePlayer-button GamePlayer-playButton">Play</button>
-			<button class="button GamePlayer-button GamePlayer-pauseButton">Pause</button>
-			<button class="button GamePlayer-button GamePlayer-nextButton">Next</button>
-			<button class="button GamePlayer-button GamePlayer-prevButton">Prev</button>
+			<button class="Button GamePlayer-button GamePlayer-playButton u-hidden">Play</button>
+			<button class="Button GamePlayer-button GamePlayer-pauseButton">Pause</button>
+			<button class="Button GamePlayer-button GamePlayer-nextButton">Next</button>
+			<button class="Button GamePlayer-button GamePlayer-prevButton">Prev</button>
 			<div class="u-grow"></div>
 			<input type="range" min="0" max="100">
 		</div>

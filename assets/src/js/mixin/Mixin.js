@@ -2,14 +2,16 @@
 	const
 		_ = require('lodash');
 
-	var Mixin = function (augmentation) {
-		this.augmentation = augmentation;
-	};
+	module.exports = function (mixinDefinition) {
 
-	Mixin.prototype.augment = function (prototype) {
+		return {
+			applyTo: function (context) {
 
-		_.extend(prototype, this.augmentation);
-	};
+				var mixin = mixinDefinition instanceof Function ? mixinDefinition(context) : mixinDefinition;
 
-	module.exports = Mixin;
+				_.extend(context, mixin);
+			}
+		}
+
+	});
 }());

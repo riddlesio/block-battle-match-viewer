@@ -4,7 +4,6 @@
         React               = require('react'),
         AIGames             = require('aigames'),
         PlaybackEvent       = AIGames.event.PlaybackEvent,
-        CellType            = require('../enum/CellType'), // er moet .js achter? a: nee, is nergens voor nodig
         Parser              = require('../io/Parser'),
         SimpleGameLoopMixin = require('../mixin/SimpleGameLoopMixin'),
         StateMixin          = require('../mixin/StateMixin'),
@@ -30,12 +29,10 @@
          */
         construct: function (options) {
 
-            var self = this;
-            
-            self.settings = _.merge(options, _defaults);
+            console.log('TetrisBattle');
 
             // register event listeners
-            registerEventListeners(self);
+            registerEventListeners(this);
         },
 
         /**
@@ -44,6 +41,10 @@
         destroy: function () {
 
             releaseEventListeners(this);
+        },
+
+        getDefaults: function () {
+            return _defaults;
         },
 
         /**
@@ -60,19 +61,16 @@
                 // "self" can be shortened by the minifier unlike "this"
                 self = this;
 
-            self.settings = _.merge(self.settings, data.settings);  
             currentState  = 0;
+            settings      = _.merge(self.settings, data.settings);
 
-            // settings en data zijn twee heel verschillende dingen,
-            // die zou ik niet zomaar samen in 1 variabele stoppen
-
-            moves  = Parser.parseMoveSet(data);
             states = Parser.parseStates(data, self.settings);
+            moves  = Parser.parseMoveSet(states);
 
-            self.states = states;
+            self.states   = states;
+            self.settings = settings;
 
-            // Provided by AbstractGame
-            self//.setMoves(moves)
+            self.setMoves(moves)
                 .setState({ currentState })
                 .play();
         },
@@ -97,6 +95,7 @@
         roundForward: function () {
 
             var currentRound,
+                nextState,
                 self = this,
                 states = self.states,
                 { currentState } = self.getState();
@@ -104,10 +103,12 @@
             currentRound = states[currentState].round;
             nextState    = _.findIndex(states, { round: currentRound + 1 });
 
-            if (-1 !== nextState) {
+            if (-1 === nextState) {
 
-                self.setState({ currentState: nextState });
+                nextState = states.length - 1;
             }
+
+            self.setState({ currentState: nextState });
         },
 
         /**
@@ -130,6 +131,7 @@
         roundBackward: function () {
 
             var currentRound,
+                nextState,
                 self = this,
                 states = self.states,
                 { currentState } = self.getState();
@@ -137,10 +139,11 @@
             currentRound = states[currentState].round;
             nextState    = _.findIndex(states, { round: currentRound - 1 });
 
-            if (-1 !== nextState) {
-
-                self.setState({ currentState: nextState });
+            if (-1 === nextState) {
+                nextState = 0;
             }
+
+            self.setState({ currentState: nextState });
         },
 
         /**
@@ -185,6 +188,8 @@
      */ 
     function registerEventListeners (context) {
 
+        PlaybackEvent.on(PlaybackEvent.PLAY, context.play, context);
+        PlaybackEvent.on(PlaybackEvent.PAUSE, context.pause, context);
         PlaybackEvent.on(PlaybackEvent.FORWARD, context.moveForward, context);
         PlaybackEvent.on(PlaybackEvent.FAST_FORWARD, context.roundForward, context);
         PlaybackEvent.on(PlaybackEvent.BACK, context.moveBackward, context);
@@ -196,6 +201,8 @@
      */ 
     function releaseEventListeners (context) {
 
+        PlaybackEvent.off(PlaybackEvent.PLAY, context.play, context);
+        PlaybackEvent.off(PlaybackEvent.PAUSE, context.pause, context);
         PlaybackEvent.off(PlaybackEvent.FORWARD, context.moveForward, context);
         PlaybackEvent.off(PlaybackEvent.FAST_FORWARD, context.roundForward, context);
         PlaybackEvent.off(PlaybackEvent.BACK, context.moveBackward, context);

@@ -13,7 +13,7 @@
         name: 'tetris-game',
         player: {
             // Determines whether they player's chrome should be displayed
-            chrome: true,
+            chrome: false,
             // Determines whether view selection should be possible
             viewstack: false,
             // A number between 0 and 1

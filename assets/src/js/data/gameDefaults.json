@@ -4,20 +4,18 @@ _defaults = {
             "0": "rgb(192, 59, 43)",
             "1": "rgb(40, 128, 186)"
         },
-        "cells": {
-            "I": "rgb(200, 0, 0)",
-            "J": "rgb(0, 200, 0)",
-            "L": "rgb(0, 0, 200)",
-            "O": "rgb(200, 200, 0)",
-            "S": "rgb(0, 200, 200)",
-            "T": "rgb(200, 0, 200)",
-            "Z": "rgb(0, 0, 0)",
-            "3": "rgb(200, 200, 200)",    // solid
-            "0": "none"                   // empty
+    },
+    "player": {
+        "canvas": {
+            "width": 900,
+            "height": 750
         }
     },
     "game": {
-        "animationSpeed": 750,
+        "speed": {
+            "min": 160,
+            "max": 750,
+        }
     },
     "field": {
         "width": 10,
@@ -28,6 +26,4 @@ _defaults = {
         }
     },
     "boxHeight": 630,
-    "canvasWidth": 900,
-    "canvasHeight": 750
 };
