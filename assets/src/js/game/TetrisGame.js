@@ -29,8 +29,6 @@
          */
         construct: function (options) {
 
-            console.log('TetrisBattle');
-
             // register event listeners
             registerEventListeners(this);
         },
@@ -62,9 +60,9 @@
                 self = this;
 
             currentState  = 0;
-            settings      = _.merge(self.settings, data.settings);
+            settings      = _.merge(this.getDefaults(), data.settings);
 
-            states = Parser.parseStates(data, self.settings);
+            states = Parser.parseStates(data, settings);
             moves  = Parser.parseMoveSet(states);
 
             self.states   = states;
