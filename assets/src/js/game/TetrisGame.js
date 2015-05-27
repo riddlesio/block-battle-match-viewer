@@ -1,3 +1,4 @@
+
 (function (undefined) {
     const
         _                   = require('lodash'),
@@ -174,7 +175,7 @@
                 { currentState } = state;
 
             React.render(GameView(states[currentState]), self.getDOMNode());
-        },
+        }
     }, [StateMixin]);
 
     // Private functions
