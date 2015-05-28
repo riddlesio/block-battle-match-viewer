@@ -1,118 +1,105 @@
 (function (undefined) {
 
-	var timer;
+	const 
+        _ = require('lodash');
 
-	const SimpleGameLoopMixin = {
+    var SimpleGameLoopMixin = {
 
-		/**
-         * Moves the game forward by one step
-         */
-        moveForward: function () {
+        applyTo: function (context) {
 
-            var i, 
-                nextRound = false;
+            var mixin = {
 
-            for (i = 0; i < this.players.length; i++) { // check if we need to go to the next round
-                if (this.roundMove >= this.players[i].history[this.round].length - 1) {
-                    nextRound = true;
-                    break;
-                }
-            }
+                /**
+                 * Moves the game forward by one step
+                 */
+                moveForward: function () {
 
-            if (nextRound) {
-                this.roundForward();
-            } else {
-                this.roundMove++;
-                this.render();
-            }
-        },
+                    var self = this,
+                        { currentState } = self.getState();
 
-        /**
-         * Moves the game forward by one round
-         */
-        roundForward: function () {
+                    if (currentState !== self.states.length - 1) {
 
-            if (this.settings.maxRound == this.round)
-                return;
-
-            this.setRoundNumber(this.round + 1);
-            this.render();
-        },
-
-        /**
-         * Moves the game backward by one step
-         */
-        moveBackward: function () {
-
-            if (this.roundMove <= 0) {
-                this.roundBackward();
-            } else {
-                this.roundMove--;
-                this.render();
-            }
-        },
-
-        /**
-         * Moves the game backward by one round
-         */
-        roundBackward: function () {
-
-            var i, maxMove,
-                roundMove = 0;
-
-            if (this.round <= 0 && this.roundMove <= 0)
-                return;
-
-            if (this.roundMove > 0) {
-                this.setRoundNumber(this.round);
-            } else {
-                this.setRoundNumber(this.round - 1);
-
-                for (i = 0; i < this.players.length; i++) { // set moveRound to maximum for this round
-                    maxMove = this.players[i].history[this.round].length - 1;
-                    if (roundMove < maxMove) {
-                        roundMove = maxMove;
+                        self.setState({ currentState: currentState + 1 });
                     }
+                },
+
+                /**
+                 * Moves the game forward by one round
+                 */
+                roundForward: function () {
+
+                    var currentRound,
+                        nextState,
+                        self = this,
+                        states = self.states,
+                        { currentState } = self.getState();
+
+                    currentRound = states[currentState].round;
+                    nextState    = _.findIndex(states, { round: currentRound + 1 });
+
+                    if (-1 === nextState) {
+
+                        nextState = states.length - 1;
+                    }
+
+                    self.setState({ currentState: nextState });
+                },
+
+                /**
+                 * Moves the game backward by one step
+                 */
+                moveBackward: function () {
+
+                    var self = this,
+                        { currentState } = self.getState();
+
+                    if (currentState > 0) {
+
+                        self.setState({ currentState: currentState - 1 });
+                    }
+                },
+
+                /**
+                 * Moves the game backward by one round
+                 */
+                roundBackward: function () {
+
+                    var currentRound,
+                        nextState,
+                        self = this,
+                        states = self.states,
+                        { currentState } = self.getState();
+
+                    currentRound = states[currentState].round;
+                    nextState    = _.findIndex(states, { round: currentRound - 1 });
+
+                    if (-1 === nextState) {
+                        nextState = 0;
+                    }
+
+                    self.setState({ currentState: nextState });
+                },
+
+                /**
+                 * Starts the game loop
+                 */
+                play: function () {
+
+                    this.timer = window.setInterval(handleTimer, 1000);
+                    PlaybackEvent.trigger(PlaybackEvent.PLAYING);
+                },
+
+                /**
+                 * Stops the game loop
+                 */
+                pause: function () {
+
+                    window.clearInterval(this.timer);
+                    PlaybackEvent.trigger(PlaybackEvent.PAUSED);
                 }
+            };
 
-                this.roundMove = roundMove;
-            }
-
-            this.render();
-        },
-
-        /**
-         * Starts the game loop
-         */
-        play: function () {
-            
-            /**
-             * TODO: Start the game loop
-             */
-
-            PlaybackEvent.trigger(PlaybackEvent.PLAYING);
-        },
-
-        /**
-         * Stops the game loop
-         */
-        pause: function () {
-
-            /**
-             * TODO: Stop the game loop
-             */
-
-            PlaybackEvent.trigger(PlaybackEvent.PAUSED);
-        },
-
-        /**
-         * Sets the round Number
-         */
-        setRoundNumber: function (round) {
-
-            this.round = round;
-            this.roundMove = 0;
-            // this.drawnRound.attr({"text": "Round " + round});
+            _.extend(context, mixin);
         }
 	};
 

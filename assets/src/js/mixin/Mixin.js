@@ -2,6 +2,7 @@
 	const
 		_ = require('lodash');
 
+	// Doet niks op het moment?
 	module.exports = function (mixinDefinition) {
 
 		return {

@@ -10,7 +10,7 @@
             var mixin,
                 state;
 
-            var mixin = {
+            mixin = {
                 /**
                  * Sets the component state
                  * @param {Object} diff
