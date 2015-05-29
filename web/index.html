@@ -8,6 +8,8 @@
 			box-sizing: border-box;
 		}
 		body {
+			width: 100vh;
+			height: 100vw;
 			margin: 0;
 		}
 
@@ -40,7 +42,12 @@
 </head>
 <body>
 	<div class="u-wrapper u-warlight2Ratio">
-		<iframe id="player" src="./player.html"></iframe>
+		<iframe
+			id="player"
+			src="./player.html"
+			allowfullscreen
+			mozallowfullscreen
+			webkitallowfullscreen></iframe>
 	</div>
 </body>
 </html>

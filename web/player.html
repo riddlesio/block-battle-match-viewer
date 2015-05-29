@@ -5,6 +5,7 @@
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="/css/GamePlayer.css">
 	<link rel="stylesheet" type="text/css" href="/css/TetrisGame.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="GamePlayer">
@@ -14,12 +15,14 @@
 				<label class="GamePlayer-label"><input type="radio" class="GamePlayer-viewOption" name="view" value="2">2</label>
 				<label class="GamePlayer-label"><input type="radio" class="GamePlayer-viewOption" name="view" value="3">3</label>
 			</div>
-			<button class="Button GamePlayer-button GamePlayer-prevButton">Prev</button>
-			<button class="Button GamePlayer-button GamePlayer-playButton u-hidden">Play</button>
-			<button class="Button GamePlayer-button GamePlayer-pauseButton">Pause</button>
-			<button class="Button GamePlayer-button GamePlayer-nextButton">Next</button>
+			<button class="Button GamePlayer-button GamePlayer-prevButton"><i class="fa fa-backward"></i></button>
+			<button class="Button GamePlayer-button GamePlayer-playButton u-hidden"><i class="fa fa-play"></i></button>
+			<button class="Button GamePlayer-button GamePlayer-pauseButton"><i class="fa fa-pause"></i></button>
+			<button class="Button GamePlayer-button GamePlayer-nextButton"><i class="fa fa-forward"></i></button>
 			<div class="u-grow"></div>
 			<input type="range" min="0" max="100">
+			<button class="Button GamePlayer-button GamePlayer-fullscreenButton"><i class="fa fa-expand"></i></button>
+			<button class="Button GamePlayer-button GamePlayer-normalscreenButton u-hidden"><i class="fa fa-compress"></i></button>
 		</div>
 		<svg class="GamePlayer-view" viewBox="0 0 1515 890" preserveAspectRatio="xMidYMid meet">
 		</svg>

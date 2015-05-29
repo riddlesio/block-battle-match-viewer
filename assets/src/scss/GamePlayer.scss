@@ -17,6 +17,25 @@ body {
 	overflow: hidden;
 }
 
+.GamePlayer-button {
+	min-width: 6.0rem;
+
+	background: transparent;
+	border: none;
+	color: darken(white, 10%);
+	font-size: 1.6rem;
+}
+
+.Button:hover {
+	color: white;
+}
+
+
+
+.GamePlayer-button:not(:first-child) {
+	margin-left: 1.0rem;
+}
+
 .GamePlayer-chrome {
 	min-height: 4rem;
 	width: 100%;

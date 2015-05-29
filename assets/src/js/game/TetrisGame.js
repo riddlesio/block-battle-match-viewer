@@ -62,8 +62,8 @@
             states = Parser.parseStates(data, settings);
             moves  = Parser.parseMoveSet(states);
 
-            self.states   = addGameOverState(states);
             self.settings = settings;
+            self.states   = states;
 
             self.setMoves(moves)
                 .setState({ currentState })
@@ -77,26 +77,20 @@
          */
         render: function (state, prevState) { // prevState is used for??
 
-            var self   = this,
-                states = self.states,
-                { currentState } = state,
-                canvas = self.getDefaults().player.canvas;
+            var props,
+                self = this,
+                { currentState } = state;
 
-            React.render(GameView(states[currentState], canvas), self.getDOMNode());
+            props = {
+                players: self.settings.players,
+                state: self.states[currentState]
+            };
+
+            React.render(GameView(props), self.getDOMNode());
         }
     }, [StateMixin, GameLoopMixin]);
 
     // Private functions
-
-    function addGameOverState (states) {
-
-        var last = _.clone(_.last(states));
-
-        last.gameOver = true;
-        states.push(last);
-
-        return states;
-    }
 
     /**
      * Register the event listeners

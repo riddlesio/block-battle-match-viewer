@@ -4,7 +4,7 @@
         React      = require('react'),
         createView = require('omniscient'),
         classNames = require('classnames'),
-        cellType   = require('../enum/CellType');
+        CellType   = require('../enum/CellType');
 
     var Cell;
 
@@ -39,13 +39,12 @@
     function createClassName (cellType) {
 
         var element  = 'TetrisGame-cell',
-            modifier = `TetrisGame-cell--${cellType}`,
-            c = classNames({
-                [element]: true,
-                [modifier]: true
-            });
+            modifier = `TetrisGame-cell--${cellType}`;
 
-        return c;
+        return classNames({
+            [element]: true,
+            [modifier]: true
+        });
     }
 
     module.exports = Cell;

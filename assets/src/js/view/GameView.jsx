@@ -5,14 +5,15 @@
         React       = require('react'),
         createView  = require('omniscient'),
         classNames  = require('classnames'),
-        Grid        = require('./Grid.jsx');
+        Grid        = require('./Grid.jsx'),
+        Overlay     = require('./Overlay.jsx').jsx;
 
     var GameView;
 
-    GameView = createView('GameView', function (state, canvas) {
+    GameView = createView('GameView', function (props) {
 
-        var { players, round, gameOver } = state,
-            { width, height } = canvas;
+        var { state, playerNames } = props,
+            { players, round, winner } = state;
 
         /**
          * Data should have the following structure:
@@ -21,38 +22,18 @@
          *     players: [
          *         { cells: [] },
          *         { cells: [] }
-         *     ]
+         *     ],
+         *     winner: [unset | string]
          * }
          */
         return (
             <g className="TetrisGame">
                 <text className="TetrisGame-currentRound">{ round }</text>
                 { _.map(players, Grid) }
-                <g className={ createOverlayClass(gameOver) }>
-                    <rect x="0" y="0" width={ width } height={ height } className="TetrisGame-overlayRect"/>
-                </g>
+                <Overlay winner={ winner } />
             </g>
         );
     });
-
-    // Private functions
-
-    /**
-     * Creates classes for the overlay element, hiding or displaying it
-     * @return {String} classNames
-     */
-    function createOverlayClass (gameOver) {
-
-        var className  = 'TetrisGame-gameOverlay',
-            modifier = 'u-hidden',
-            c = classNames({
-                [className]: true,
-                [modifier]: !gameOver
-            });
-
-        return c;
-    }
-
 
     module.exports = GameView;
 }());

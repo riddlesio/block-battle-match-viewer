@@ -21,7 +21,8 @@
 
                     if (currentState !== self.states.length - 1) {
                         self.setState({ currentState: currentState + 1 });
-                    } else if (self.timer) {
+                    }
+                    else {
                         self.pause();
                     }
                 },
@@ -90,6 +91,7 @@
 
                     this.timer && window.clearInterval(this.timer);
                     this.timer = window.setInterval(handleTimer, 1000);
+
                     PlaybackEvent.trigger(PlaybackEvent.PLAYING);
                 },
 
@@ -98,8 +100,9 @@
                  */
                 pause: function () {
 
-                    window.clearInterval(this.timer);
+                    this.timer && window.clearInterval(this.timer);
                     this.timer = null;
+
                     PlaybackEvent.trigger(PlaybackEvent.PAUSED);
                 }
             };

@@ -12,12 +12,12 @@
 
         var { cells, children } = datum;
 
-    	/**
-    	 * Data should have the following structure:
-    	 * {
-    	 *     cells: []
-    	 * }
-    	 */
+        /**
+         * Data should have the following structure:
+         * {
+         *     cells: []
+         * }
+         */
         return <g
             className="TetrisGame-grid"
             transform={ createTransform(children[0]) }>
