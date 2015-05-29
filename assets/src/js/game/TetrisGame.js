@@ -77,12 +77,13 @@
         /**
          * Renders the game
          */
-        render: function (state, prevState) {
+        render: function (state, prevState) { // prevState is used for??
 
             var self   = this,
                 states = self.states,
                 { currentState } = state;
 
+            console.log(states[currentState].players[0].move);
             React.render(GameView(states[currentState]), self.getDOMNode());
         }
     }, [StateMixin, GameLoopMixin]);
