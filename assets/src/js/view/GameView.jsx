@@ -1,4 +1,4 @@
-(function (undefined) {
+(function () {
 
     const
         _           = require('lodash'),
@@ -25,7 +25,7 @@
             <g class="TetrisGame">
                 <text className="TetrisGame-currentRound">{ round }</text>
                 { _.map(players, Grid) }
-                <rect className="TetrisGame-background"/> 
+                <rect className="TetrisGame-background"/>
             </g>
         );
     });
