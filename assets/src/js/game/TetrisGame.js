@@ -6,18 +6,14 @@
         AIGames             = require('aigames'),
         PlaybackEvent       = AIGames.event.PlaybackEvent,
         Parser              = require('../io/Parser'),
-        SimpleGameLoopMixin = require('../mixin/SimpleGameLoopMixin'),
         StateMixin          = require('../mixin/StateMixin'),
         GameLoopMixin       = require('../mixin/SimpleGameLoopMixin'),
         GameView            = require('../view/GameView.jsx'),
 
-        _defaults           = require('../data/gameDefaults.json'),
-
-        // To be removed for production
-        _dummyData          = require('../data/dummyData.json');
+        _defaults           = require('../data/gameDefaults.json');
 
     var TetrisBattle;
-     
+
     /**
      * TetrisBattle class
      * @constructor
@@ -71,11 +67,13 @@
 
             self.setMoves(moves)
                 .setState({ currentState })
-                // .play();
+                .play();
         },
 
         /**
          * Renders the game
+         * @param {Object} state
+         * @param {Object} prevState
          */
         render: function (state, prevState) {
 
@@ -89,13 +87,10 @@
 
     // Private functions
 
-    function handleTimer () {
-        PlaybackEvent.trigger(PlaybackEvent.FORWARD);
-    }
-
     /**
      * Register the event listeners
-     */ 
+     * @param {TetrisGame} context
+     */
     function registerEventListeners (context) {
 
         PlaybackEvent.on(PlaybackEvent.PLAY, context.play, context);
@@ -108,7 +103,8 @@
 
     /**
      * Release the event listeners
-     */ 
+     * @param {TetrisGame} context
+     */
     function releaseEventListeners (context) {
 
         PlaybackEvent.off(PlaybackEvent.PLAY, context.play, context);

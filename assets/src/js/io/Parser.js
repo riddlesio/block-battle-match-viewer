@@ -4,7 +4,6 @@
 
     var Parser;
 
-    // Parser is a singleton object, so no createClass is nessecary
     /**
      * Singleton containing several utility functions for data parsing
      * @type {Object}
@@ -70,7 +69,6 @@
                 };
             });
         }
-        
     };
 
     module.exports = Parser;

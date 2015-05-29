@@ -40,10 +40,14 @@
                     return self;
                 },
 
+                /**
+                 * Returns the state
+                 * @return {Object}
+                 */
                 getState: function () {
 
                     return state;
-                },
+                }
             };
 
             _.extend(context, mixin);

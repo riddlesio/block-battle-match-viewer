@@ -1,7 +1,9 @@
-(function (undefined) {
+(function () {
 
-	const 
-        _ = require('lodash');
+    const
+        _               = require('lodash'),
+        AIGames         = require('aigames'),
+        PlaybackEvent   = AIGames.event.PlaybackEvent;
 
     var SimpleGameLoopMixin = {
 
@@ -53,7 +55,7 @@
                     var self = this,
                         { currentState } = self.getState();
 
-                    if (currentState > 0) {
+                    if (0 < currentState) {
 
                         self.setState({ currentState: currentState - 1 });
                     }
@@ -101,8 +103,12 @@
 
             _.extend(context, mixin);
         }
-	};
+    };
 
-	module.exports = SimpleGameLoopMixin;
+    function handleTimer () {
+        PlaybackEvent.trigger(PlaybackEvent.FORWARD);
+    }
+
+    module.exports = SimpleGameLoopMixin;
 
 }());
