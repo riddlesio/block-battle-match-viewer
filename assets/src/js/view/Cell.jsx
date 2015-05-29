@@ -39,12 +39,11 @@
     function createClassName (cellType) {
 
         var element  = 'TetrisGame-cell',
-            modifier = `TetrisGame-cell--${cellType}`;
-
-        var c = classNames({
-            [element]: true,
-            [modifier]: true
-        });
+            modifier = `TetrisGame-cell--${cellType}`,
+            c = classNames({
+                [element]: true,
+                [modifier]: true
+            });
 
         return c;
     }

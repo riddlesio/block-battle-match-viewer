@@ -7,8 +7,8 @@ _defaults = {
     },
     "player": {
         "canvas": {
-            "width": 900,
-            "height": 750
+            "width": 1515,
+            "height": 890
         }
     },
     "game": {

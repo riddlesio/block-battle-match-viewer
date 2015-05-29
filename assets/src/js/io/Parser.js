@@ -46,6 +46,7 @@
 
                 return {
                     round,
+                    gameOver: false,
                     players: _.map(players, function (player) {
 
                         var { field, move } = player;
