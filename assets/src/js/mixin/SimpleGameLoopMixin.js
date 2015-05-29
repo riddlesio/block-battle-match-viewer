@@ -87,6 +87,7 @@
                  */
                 play: function () {
 
+                    this.timer && window.clearInterval(this.timer);
                     this.timer = window.setInterval(handleTimer, 1000);
                     PlaybackEvent.trigger(PlaybackEvent.PLAYING);
                 },

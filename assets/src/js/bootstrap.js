@@ -1,4 +1,4 @@
-(function (undefined) {
+(function () {
 
     const
         AIGames      = require('aigames'),
@@ -20,5 +20,4 @@
             aspectRatio: 1000 / 558
         }
     });
-
 }());
