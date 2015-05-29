@@ -8,15 +8,18 @@
 
     var Overlay;
 
-    Overlay = createView('Overlay', function (winner) {
+    Overlay = createView('Overlay', function (props) {
 
         var cx,
-            message;
+            message,
+            { winner } = props;
 
         cx = classNames({
             'TetrisGame-overlay': true,
             'u-hidden': !winner
         });
+
+        console.log(winner);
 
         if ('none' === winner) {
             message = 'The game is a draw';
@@ -28,7 +31,7 @@
         return (
             <g className={ cx }>
                 <rect x="0" y="0" className="TetrisGame-overlayBackground"/>
-                <text className="TetrisGame-overlayMessage">{ message }</text>
+                <text x="50%" y="50%" className="TetrisGame-overlayMessage">{ message }</text>
             </g>
         );
     });

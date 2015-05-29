@@ -26,9 +26,12 @@
          *     winner: [unset | string]
          * }
          */
+        
+        console.log(state);
+
         return (
             <g className="TetrisGame">
-                <text className="TetrisGame-currentRound">{ round }</text>
+                <text x="50%" y="5%" className="TetrisGame-currentRound">{ 'Round ' + round }</text>
                 { _.map(players, Grid) }
                 <Overlay winner={ winner } />
             </g>

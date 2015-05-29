@@ -42,11 +42,11 @@
 
             return _.map(data.states, function (state) {
 
-                var { players, round } = state;
+                var { players, round, winner } = state;
 
                 return {
                     round,
-                    gameOver: false,
+                    winner,
                     players: _.map(players, function (player) {
 
                         var { field, move } = player;

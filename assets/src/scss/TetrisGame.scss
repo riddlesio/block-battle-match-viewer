@@ -6,7 +6,7 @@ html {
 	
 }
 
-.TetrisGame-overlayRect {
+.TetrisGame-overlayBackground {
 	width: 100%;
 	height: 100%;
 
@@ -14,10 +14,20 @@ html {
 	opacity: 0.4;
 }
 
+.TetrisGame-overlayMessage {
+	text-anchor: middle;
+
+	fill: white;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 2.8rem;
+}
+
 .TetrisGame-currentRound {
-	margin: 30px 0 30px 0;
-	color: white;
-	font-size: 30px;
+	text-anchor: middle;
+
+	fill: black;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 3.0rem;
 }
 
 .TetrisGame-cell {
