@@ -42,16 +42,19 @@
 
             return _.map(data.states, function (state) {
 
-                var { players, round, winner } = state;
+                var { players, round, nextShape, winner } = state;
 
                 return {
                     round,
+                    nextShape,
                     winner,
                     players: _.map(players, function (player) {
 
-                        var { field, move } = player;
+                        var { field, combo, points, move } = player;
 
                         return {
+                            combo,
+                            points,
                             move,
                             cells: _
                                 .chain(field)

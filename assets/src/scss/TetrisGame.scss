@@ -12,6 +12,7 @@ html {
 
 	stroke: none;
 	opacity: 0.4;
+	fill: black;
 }
 
 .TetrisGame-overlayMessage {
@@ -22,12 +23,19 @@ html {
 	font-size: 2.8rem;
 }
 
+.TetrisGame-nextShape,
 .TetrisGame-currentRound {
 	text-anchor: middle;
 
 	fill: black;
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 3.0rem;
+	font-size: 3.5rem;
+}
+
+.TetrisGame-playerInfo {
+	fill: black;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 2.5rem;
 }
 
 .TetrisGame-cell {
@@ -36,7 +44,7 @@ html {
 }
 
 .TetrisGame-cell--3 {
-	fill: none;
+	fill: rgb(100, 100, 100);
 }
 
 .TetrisGame-cell--I {

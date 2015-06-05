@@ -30,7 +30,7 @@
 
         return (
             <g className={ cx }>
-                <rect x="0" y="0" className="TetrisGame-overlayBackground"/>
+                <rect x="0" y="0" width="100%" height="100%" className="TetrisGame-overlayBackground"/>
                 <text x="50%" y="50%" className="TetrisGame-overlayMessage">{ message }</text>
             </g>
         );
