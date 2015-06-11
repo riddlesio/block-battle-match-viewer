@@ -17,7 +17,12 @@
             // Determines whether view selection should be possible
             viewstack: false,
             // A number between 0 and 1
-            aspectRatio: 1000 / 558
+            aspectRatio: 1000 / 558,
+            // Time between each step when playing
+            playbackTimeout: {
+                min: 30,
+                max: 850
+            },
         }
     });
 }());

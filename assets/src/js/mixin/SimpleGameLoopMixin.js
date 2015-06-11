@@ -89,9 +89,6 @@
                  */
                 play: function () {
 
-                    this.timer && window.clearInterval(this.timer);
-                    this.timer = window.setInterval(handleTimer, 1000);
-
                     PlaybackEvent.trigger(PlaybackEvent.PLAYING);
                 },
 
@@ -100,9 +97,6 @@
                  */
                 pause: function () {
 
-                    this.timer && window.clearInterval(this.timer);
-                    this.timer = null;
-
                     PlaybackEvent.trigger(PlaybackEvent.PAUSED);
                 }
             };
@@ -110,10 +104,6 @@
             _.extend(context, mixin);
         }
     };
-
-    function handleTimer () {
-        PlaybackEvent.trigger(PlaybackEvent.FORWARD);
-    }
 
     module.exports = SimpleGameLoopMixin;
 

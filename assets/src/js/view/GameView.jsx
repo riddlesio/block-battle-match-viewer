@@ -4,7 +4,6 @@
         _           = require('lodash'),
         React       = require('react'),
         createView  = require('omniscient'),
-        classNames  = require('classnames'),
         PlayerView  = require('./PlayerView.jsx'),
         Overlay     = require('./Overlay.jsx').jsx;
 

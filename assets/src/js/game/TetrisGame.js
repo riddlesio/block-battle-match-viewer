@@ -102,8 +102,8 @@
         PlaybackEvent.on(PlaybackEvent.PAUSE, context.pause, context);
         PlaybackEvent.on(PlaybackEvent.FORWARD, context.moveForward, context);
         PlaybackEvent.on(PlaybackEvent.FAST_FORWARD, context.roundForward, context);
-        PlaybackEvent.on(PlaybackEvent.BACK, context.moveBackward, context);
-        PlaybackEvent.on(PlaybackEvent.REWIND, context.roundBackward, context);
+        PlaybackEvent.on(PlaybackEvent.BACKWARD, context.moveBackward, context);
+        PlaybackEvent.on(PlaybackEvent.FAST_BACKWARD, context.roundBackward, context);
     }
 
     /**
@@ -116,8 +116,8 @@
         PlaybackEvent.off(PlaybackEvent.PAUSE, context.pause, context);
         PlaybackEvent.off(PlaybackEvent.FORWARD, context.moveForward, context);
         PlaybackEvent.off(PlaybackEvent.FAST_FORWARD, context.roundForward, context);
-        PlaybackEvent.off(PlaybackEvent.BACK, context.moveBackward, context);
-        PlaybackEvent.off(PlaybackEvent.REWIND, context.roundBackward, context);
+        PlaybackEvent.off(PlaybackEvent.BACKWARD, context.moveBackward, context);
+        PlaybackEvent.off(PlaybackEvent.FAST_BACKWARD, context.roundBackward, context);
     }
 
     module.exports = TetrisBattle;
