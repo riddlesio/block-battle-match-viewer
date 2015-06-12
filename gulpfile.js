@@ -54,6 +54,12 @@ gulp.task('sass', function () {
         .pipe(notify({ message: 'CRM Sass compiled' }));
 });
 
+gulp.task('img', function () {
+    return gulp.src('./assets/src/img/*')
+        .pipe(gulp.dest('./assets/dev/img/'))
+        .pipe(notify({ message: 'Images copied' }));
+});
+
 gulp.task('js:minify', function () {
     return gulp.src('./assets/dev/js/*')
         .pipe(uglify())
@@ -85,7 +91,7 @@ gulp.task('js:compile', function () {
 });
 
 gulp.task('js', function () {
-    sequence('js:compile', 'js:minify');
+    sequence('js:compile', 'js:minify', 'img');
 });
 
 gulp.task('watch', function () {

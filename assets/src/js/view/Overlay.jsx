@@ -25,7 +25,7 @@
             message = 'The game is a draw';
         }
         else {
-            message = `Player ${winner} won the game`;
+            message = `${winner} won the game!`;
         }
 
         return (

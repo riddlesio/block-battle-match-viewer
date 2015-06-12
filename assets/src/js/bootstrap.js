@@ -8,8 +8,8 @@
 
     // Wraps the game for use on TheAIGames website
     // Takes care of setting up and destroying the competition namespace
-    AIGames.util.legacyWrapper(TetrisGame,
-        new TetrisGame({
+    // AIGames.util.legacyWrapper(TetrisGame,
+    game = new TetrisGame({
             name: 'tetris-battle',
             player: {
                 // Determines whether they player's chrome should be displayed
@@ -25,5 +25,5 @@
                 },
             }
         })
-    );
+    // );
 }());

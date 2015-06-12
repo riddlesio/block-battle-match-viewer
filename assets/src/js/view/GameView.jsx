@@ -11,16 +11,24 @@
 
     GameView = createView('GameView', function (props) {
 
-        var { state, playerNames } = props,
-            { players, round, nextShape, winner } = state;
+        var { state, settings } = props,
+            { players, round, nextShape, winner } = state,
+            playerView = [];
+
+        _.forEach(players, function (player) {
+            playerView.push(_.assign({ 
+                "settings": settings,
+                "nextShape": nextShape
+            }, player));
+        });
 
         /**
          * Data should have the following structure:
          * {
          *     round: Integer,
-         *     players: [
-         *         { cells: [] },
-         *         { cells: [] }
+         *     playerView: [
+         *         Object,
+         *         Object
          *     ],
          *     winner: [unset | string]
          * }
@@ -29,8 +37,7 @@
         return (
             <g className="TetrisGame">
                 <text x="50%" y="5%" className="TetrisGame-currentRound">{ 'Round ' + round }</text>
-                <text x="50%" y="10%" className="TetrisGame-nextShape">{ nextShape }</text>
-                { _.map(players, PlayerView) }
+                { _.map(playerView, PlayerView) }
                 <Overlay winner={ winner } />
             </g>
         );

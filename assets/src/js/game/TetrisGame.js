@@ -82,8 +82,8 @@
                 { currentState } = state;
 
             props = {
-                players: self.settings.players,
-                state: self.states[currentState]
+                state: self.states[currentState],
+                settings: self.settings,
             };
 
             React.render(GameView(props), self.getDOMNode());

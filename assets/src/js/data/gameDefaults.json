@@ -11,18 +11,12 @@ _defaults = {
             "height": 890
         }
     },
-    "game": {
-        "speed": {
-            "min": 160,
-            "max": 750,
-        }
-    },
     "field": {
         "width": 10,
         "height": 20,
         "cell": {
-            "width": 35,
-            "height": 35
+            "width": 33,
+            "height": 33
         }
     },
     "boxHeight": 630,

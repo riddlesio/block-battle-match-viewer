@@ -15,7 +15,7 @@ server = http.createServer(function (request, response) {
 			return;
 		}
 
-		if (request.url.indexOf('/data/') !== -1) {
+		if (request.url.indexOf('/data') !== -1) {
 			fs.readFile('./assets/src/js/data/dummyData.json', function (error, content) {
 
 				if (!error) {

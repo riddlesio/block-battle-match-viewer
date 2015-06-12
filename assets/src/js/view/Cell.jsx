@@ -26,7 +26,20 @@
 
         className = createClassName(cellType);
 
-        return React.DOM.rect({ x, y, width, height, className });
+        if (cellType === "0" || cellType === "3") {
+            return React.DOM.rect({ x, y, width, height, className });
+        }
+
+        return (
+            <svg dangerouslySetInnerHTML={{ __html: 
+                `<image 
+                    x=${ x } 
+                    y=${ y } 
+                    width=${ width } 
+                    height=${ height } 
+                    xlink:href=${ "./img/block_" + cellType + ".jpg" } />`  
+            }} />
+        );
     });
 
     // Private functions
