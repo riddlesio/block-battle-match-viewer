@@ -19,8 +19,6 @@
             'u-hidden': !winner
         });
 
-        console.log(winner);
-
         if ('none' === winner) {
             message = 'The game is a draw';
         }

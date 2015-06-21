@@ -98,6 +98,11 @@
                 pause: function () {
 
                     PlaybackEvent.trigger(PlaybackEvent.PAUSED);
+                },
+
+                setMove: function (index) {
+
+                    return this.setState({ currentState: index });
                 }
             };
 

@@ -53,6 +53,52 @@ body {
 	background-size: cover;
 }
 
+.GamePlayer-dropdown {
+	max-height: 93vh;
+	width: 100%;
+	
+	position: absolute;
+ 	bottom: 0;
+
+	overflow-y: scroll;
+
+
+	&.is-collapsed {
+
+		.Dropdown-item:not(.is-selected) {
+			height: 0;
+		}
+	}
+}
+
+.Dropdown {
+
+}
+
+.Dropdown-item {
+	padding-top: 1.0rem;
+	padding-bottom: 1.0rem;
+
+	line-height: 2.0rem;
+
+	overflow: hidden;
+
+	transition: height 0.25s linear;
+}
+
+.Dropdown-item.is-selected,
+.Dropdown.is-expanded .Dropdown-item {
+	height: auto;
+}
+
+.Dropdown-select {
+
+}
+
+.Dropdown-label {
+
+}
+
 .u-row {
 	display: flex;
 	flex-direction: row;

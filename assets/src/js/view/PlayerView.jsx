@@ -33,38 +33,25 @@
                 <g className="TetrisGame-grid">
                     { _.map(cells, Cell) }
                 </g>
-                <text 
+                <text
                     x={ fieldWidth / 2 }
-                    y="-30" 
-                    className="TetrisGame-playerInfo TetrisGame-playerName">
-                        { name }
-                </text>
-                <text 
-                    x="-180" 
-                    y="5%" 
-                    className="TetrisGame-playerInfo TetrisGame-playerCombo">
-                        { 'Combo ' + combo } 
-                </text>
-                <text 
-                    x="-180" 
-                    y="12%" 
-                    className="TetrisGame-playerInfo TetrisGame-playerPoints">
-                        { 'Points ' + points }
-                </text>
-                <svg dangerouslySetInnerHTML={{ __html: 
-                    `<image 
-                        x=${ fieldWidth + 25 } 
-                        y=5%
-                        width=99
-                        height=132
-                        xlink:href=${ "./img/shape_" + nextShape + ".png" } />`  
+                    y="-30"
+                    className="TetrisGame-playerInfo TetrisGame-playerName">{ name }</text>
+                <text
+                    x="-180"
+                    y="5%"
+                    className="TetrisGame-playerInfo TetrisGame-playerCombo">{ 'Combo ' + combo }</text>
+                <text
+                    x="-180"
+                    y="12%"
+                    className="TetrisGame-playerInfo TetrisGame-playerPoints">{ 'Points ' + points }</text>
+                <g dangerouslySetInnerHTML={{
+                    __html: `<use x="${ fieldWidth + 25}" y="5%" width="99" height="132" xlink:href="#shape-${ nextShape }" />`
                 }} />
-                <text 
+                <text
                     x={ fieldWidth / 2 }
                     y={ fieldHeight + 35 }
-                    className="TetrisGame-playerInfo TetrisGame-playerMove">
-                        { move }
-                </text>
+                    className="TetrisGame-playerInfo TetrisGame-playerMove">{ move }</text>
             </g>;
     });
 

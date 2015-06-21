@@ -31,13 +31,8 @@
         }
 
         return (
-            <svg dangerouslySetInnerHTML={{ __html: 
-                `<image 
-                    x=${ x } 
-                    y=${ y } 
-                    width=${ width } 
-                    height=${ height } 
-                    xlink:href=${ "./img/block_" + cellType + ".jpg" } />`  
+            <g dangerouslySetInnerHTML={{
+                __html: `<use x="${ x }" y="${ y }" width="33" height="33" xlink:href="#block-${ cellType }" />`
             }} />
         );
     });
