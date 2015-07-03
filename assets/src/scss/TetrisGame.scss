@@ -20,74 +20,91 @@ html {
 
 	fill: white;
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 2.8rem;
+	font-size: 3.5rem;
 }
 
 .TetrisGame-currentRound {
 	text-anchor: middle;
 
-	fill: black;
-	font-family: Helvetica, Arial, sans-serif;
+	fill: white;
+	font-family: 'Doppio One';
 	font-size: 3.5rem;
 }
 
 .TetrisGame-playerInfo {
 	fill: black;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'Doppio One';
 	font-size: 2.5rem;
 }
 
 .TetrisGame-playerInfo.TetrisGame-playerName {
 	text-anchor: middle;
-
+	fill: white;
 	font-size: 3.0rem;
 }
 
 .TetrisGame-playerInfo.TetrisGame-playerMove {
 	text-anchor: middle;
+	font-size: 2rem;
+}
+
+.TetrisGame-playerMove-illegal {
+	fill: rgb(250, 167, 25);
 }
 
 .TetrisGame-playerInfo.TetrisGame-nextShape {
 	font-size: 3.0rem;
 }
 
+.TetrisGame-grid-background {
+	fill: rgb(32, 45, 63);
+	stroke: rgb(10, 18, 29);
+	stroke-width: 5px;
+}
+
+.TetrisGame-playerName-background {
+	fill: none;
+	stroke: rgb(10, 18, 29);
+	stroke-width: 5px;
+}
+
 .TetrisGame-cell {
-	stroke: black;
-	stroke-width: 1px;
+	stroke: none;
+	// stroke-width: 1px;
 }
 
 .TetrisGame-cell--3 {
-	fill: rgb(100, 100, 100);
+	fill: rgb(10, 18, 29);
 }
 
 .TetrisGame-cell--I {
-	fill: rgb(200, 0, 0);
+	fill: rgb(250, 167, 26);
 }
 
 .TetrisGame-cell--J {
-	fill: rgb(0, 200, 0);
+	fill: rgb(112, 96, 170);
 }
 
 .TetrisGame-cell--L {
-	fill: rgb(0, 0, 200);
+	fill: rgb(142, 176, 62);
 }
 
 .TetrisGame-cell--O {
-	fill: rgb(200, 200, 0);
+	fill: rgb(53, 151, 211);
 }
 
 .TetrisGame-cell--S {
-	fill: rgb(0, 200, 200);
+	fill: rgb(232, 76, 60);
 }
 
 .TetrisGame-cell--T {
-	fill: rgb(200, 0, 200);
+	fill: rgb(254, 206, 9);
 }
 
 .TetrisGame-cell--Z {
-	fill: rgb(0, 0, 0);
+	fill: rgb(212, 92, 160);
 }
 
 .TetrisGame-cell--0 {
-	fill: rgb(200, 200, 200);
+	fill: rgb(219, 225, 240);
 }

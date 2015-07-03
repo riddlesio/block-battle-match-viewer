@@ -10,7 +10,6 @@
         TURN_LEFT: 'turnleft',
         TURN_RIGHT: 'turnright',
         DROP: 'drop',
-        // ILLEGAL: 'illegal',
         NONE: ''
     };
 

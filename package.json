@@ -24,7 +24,7 @@
     "vinyl-source-stream": "~1.0.0"
   },
   "dependencies": {
-    "aigames": "git+ssh://git@bitbucket.org:nikovanmeurs/aigames.git#master",
+    "aigames": "git+ssh://git@bitbucket.org:nikovanmeurs/aigames.git#tetrisjim",
     "classnames": "^2.1.0",
     "eventemitter3": "^1.1.0",
     "inflect": "^0.3.0",

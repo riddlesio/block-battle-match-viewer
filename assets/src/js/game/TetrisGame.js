@@ -59,8 +59,9 @@
             currentState  = 0;
             settings      = _.merge(this.getDefaults(), data.settings);
 
-            states = Parser.parseStates(data, settings);
-            moves  = Parser.parseMoveSet(states);
+            settings = Parser.parsePlayerNames(settings);
+            states   = Parser.parseStates(data, settings);
+            moves    = Parser.parseMoveSet(states);
 
             self.settings = settings;
             self.states   = states;

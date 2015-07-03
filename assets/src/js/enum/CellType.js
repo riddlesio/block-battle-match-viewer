@@ -1,5 +1,6 @@
 (function (undefined) {
 
+    // not used currently?
     const CellType = {
         I: "I",
         J: "J",

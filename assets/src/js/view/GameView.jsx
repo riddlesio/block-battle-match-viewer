@@ -37,50 +37,50 @@
         return (
             <g className="TetrisGame">
                 <defs>
-                    <symbol id='shape-I' width="99" height="132" viewBox='0 0 99 132' dangerouslySetInnerHTML={{
-                        __html: '<image width="99" height="132" xlink:href="/img/shape_I.png" />'
-                    }} />
-                    <symbol id='shape-J' width="99" height="132" viewBox='0 0 99 132' dangerouslySetInnerHTML={{
-                        __html: '<image width="99" height="132" xlink:href="/img/shape_J.png" />'
-                    }} />
-                    <symbol id='shape-L' width="99" height="132" viewBox='0 0 99 132' dangerouslySetInnerHTML={{
-                        __html: '<image width="99" height="132" xlink:href="/img/shape_L.png" />'
-                    }} />
-                    <symbol id='shape-O' width="99" height="132" viewBox='0 0 99 132' dangerouslySetInnerHTML={{
-                        __html: '<image width="99" height="132" xlink:href="/img/shape_O.png" />'
-                    }} />
-                    <symbol id='shape-S' width="99" height="132" viewBox='0 0 99 132' dangerouslySetInnerHTML={{
-                        __html: '<image width="99" height="132" xlink:href="/img/shape_S.png" />'
-                    }} />
-                    <symbol id='shape-T' width="99" height="132" viewBox='0 0 99 132' dangerouslySetInnerHTML={{
-                        __html: '<image width="99" height="132" xlink:href="/img/shape_T.png" />'
-                    }} />
-                    <symbol id='shape-Z' width="99" height="132" viewBox='0 0 99 132' dangerouslySetInnerHTML={{
-                        __html: '<image width="99" height="132" xlink:href="/img/shape_Z.png" />'
-                    }} />
-                    <symbol id='block-I' width="33" height="33" viewBox='0 0 33 33' dangerouslySetInnerHTML={{
-                        __html: '<image width="33" height="33" xlink:href="/img/block_I.jpg" />'
-                    }} />
-                    <symbol id='block-J' width="33" height="33" viewBox='0 0 33 33' dangerouslySetInnerHTML={{
-                        __html: '<image width="33" height="33" xlink:href="/img/block_J.jpg" />'
-                    }} />
-                    <symbol id='block-L' width="33" height="33" viewBox='0 0 33 33' dangerouslySetInnerHTML={{
-                        __html: '<image width="33" height="33" xlink:href="/img/block_L.jpg" />'
-                    }} />
-                    <symbol id='block-O' width="33" height="33" viewBox='0 0 33 33' dangerouslySetInnerHTML={{
-                        __html: '<image width="33" height="33" xlink:href="/img/block_O.jpg" />'
-                    }} />
-                    <symbol id='block-S' width="33" height="33" viewBox='0 0 33 33' dangerouslySetInnerHTML={{
-                        __html: '<image width="33" height="33" xlink:href="/img/block_S.jpg" />'
-                    }} />
-                    <symbol id='block-T' width="33" height="33" viewBox='0 0 33 33' dangerouslySetInnerHTML={{
-                        __html: '<image width="33" height="33" xlink:href="/img/block_T.jpg" />'
-                    }} />
-                    <symbol id='block-Z' width="33" height="33" viewBox='0 0 33 33' dangerouslySetInnerHTML={{
-                        __html: '<image width="33" height="33" xlink:href="/img/block_Z.jpg" />'
-                    }} />
+                    <symbol id='shape-I' viewBox='0 0 99 132'>
+                        <rect x="33" y="0" className="TetrisGame-cell--I" width="32.5" height="32.5"/>
+                        <rect x="33" y="33" className="TetrisGame-cell--I" width="32.5" height="32.5"/>
+                        <rect x="33" y="66" className="TetrisGame-cell--I" width="32.5" height="32.5"/>
+                        <rect x="33" y="99" className="TetrisGame-cell--I" width="32.5" height="32.5"/>
+                    </symbol>
+                    <symbol id='shape-J' viewBox='0 0 99 132'>
+                        <rect x="49.5" y="16.5" className="TetrisGame-cell--J" width="32.5" height="32.5"/>
+                        <rect x="49.5" y="49.5" className="TetrisGame-cell--J" width="32.5" height="32.5"/>
+                        <rect x="49.5" y="82.5" className="TetrisGame-cell--J" width="32.5" height="32.5"/>
+                        <rect x="16.5" y="82.5" className="TetrisGame-cell--J" width="32.5" height="32.5"/>
+                    </symbol>
+                    <symbol id='shape-L' viewBox='0 0 99 132'>
+                        <rect x="16.5" y="16.5" className="TetrisGame-cell--L" width="32.5" height="32.5"/>
+                        <rect x="16.5" y="49.5" className="TetrisGame-cell--L" width="32.5" height="32.5"/>
+                        <rect x="16.5" y="82.5" className="TetrisGame-cell--L" width="32.5" height="32.5"/>
+                        <rect x="49.5" y="82.5" className="TetrisGame-cell--L" width="32.5" height="32.5"/>
+                    </symbol>
+                    <symbol id='shape-O' viewBox='0 0 99 132'>
+                        <rect x="16.5" y="33" className="TetrisGame-cell--O" width="32.5" height="32.5"/>
+                        <rect x="16.5" y="66" className="TetrisGame-cell--O" width="32.5" height="32.5"/>
+                        <rect x="49.5" y="33" className="TetrisGame-cell--O" width="32.5" height="32.5"/>
+                        <rect x="49.5" y="66" className="TetrisGame-cell--O" width="32.5" height="32.5"/>
+                    </symbol>
+                    <symbol id='shape-S' viewBox='0 0 99 132'>
+                        <rect x="16.5" y="16.5" className="TetrisGame-cell--S" width="32.5" height="32.5"/>
+                        <rect x="16.5" y="49.5" className="TetrisGame-cell--S" width="32.5" height="32.5"/>
+                        <rect x="49.5" y="49.5" className="TetrisGame-cell--S" width="32.5" height="32.5"/>
+                        <rect x="49.5" y="82.5" className="TetrisGame-cell--S" width="32.5" height="32.5"/>
+                    </symbol>
+                    <symbol id='shape-T' viewBox='0 0 99 132'>
+                        <rect x="16.5" y="16.5" className="TetrisGame-cell--T" width="32.5" height="32.5"/>
+                        <rect x="16.5" y="49.5" className="TetrisGame-cell--T" width="32.5" height="32.5"/>
+                        <rect x="16.5" y="82.5" className="TetrisGame-cell--T" width="32.5" height="32.5"/>
+                        <rect x="49.5" y="49.5" className="TetrisGame-cell--T" width="32.5" height="32.5"/>
+                    </symbol>
+                    <symbol id='shape-Z' viewBox='0 0 99 132'>
+                        <rect x="49.5" y="16.5" className="TetrisGame-cell--Z" width="32.5" height="32.5"/>
+                        <rect x="49.5" y="49.5" className="TetrisGame-cell--Z" width="32.5" height="32.5"/>
+                        <rect x="16.5" y="49.5" className="TetrisGame-cell--Z" width="32.5" height="32.5"/>
+                        <rect x="16.5" y="82.5" className="TetrisGame-cell--Z" width="32.5" height="32.5"/>
+                    </symbol>
                 </defs>
-                <text x="50%" y="5%" className="TetrisGame-currentRound">{ 'Round ' + round }</text>
+                <text x="50%" y="70" className="TetrisGame-currentRound">{ 'Round ' + round }</text>
                 { _.map(playerView, PlayerView) }
                 <Overlay winner={ winner } />
             </g>

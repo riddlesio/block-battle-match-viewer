@@ -4,14 +4,15 @@
 
 body {
 	margin: 0;
+	overflow: hidden;
 
 	background: black;
 	font-size: 62.5%;
 }
 
 .GamePlayer {
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 
 	position: relative;
 	overflow: hidden;
@@ -49,7 +50,7 @@ body {
 	width: 100%;
 	height: 100%;
 
-	background: url('http://theaigames.com/img/background-warlight2.png');
+	background: url('/img/background-blockbattle.jpg');
 	background-size: cover;
 }
 

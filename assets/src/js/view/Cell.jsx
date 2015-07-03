@@ -26,15 +26,22 @@
 
         className = createClassName(cellType);
 
-        if (cellType === "0" || cellType === "3") {
-            return React.DOM.rect({ x, y, width, height, className });
-        }
+        x += 0.5;
+        y += 0.5;
+        width -= 1;
+        height -= 1;
 
-        return (
-            <g dangerouslySetInnerHTML={{
-                __html: `<use x="${ x }" y="${ y }" width="33" height="33" xlink:href="#block-${ cellType }" />`
-            }} />
-        );
+        return React.DOM.rect({ x, y, width, height, className });
+
+        // if (cellType === "0" || cellType === "3") {
+            // return React.DOM.rect({ x, y, width, height, className });
+        // }
+
+        // return (
+            // <g dangerouslySetInnerHTML={{
+            //     __html: `<use x="${ x }" y="${ y }" width="33" height="33" xlink:href="#block-${ cellType }" />`
+            // }} />
+        // );
     });
 
     // Private functions
