@@ -27,6 +27,8 @@
          */
         construct: function (options) {
 
+            console.log("YO");
+
             registerEventListeners(this);
         },
 

@@ -28,7 +28,10 @@ var handleError = function (error) {
 
 gulp.task('deploy', function () {
     return gulp
-        .src('./assets/dev/**/*', { base: './assets/dev/' })
+        .src([
+            './assets/dev/**/*',
+            './assets/prod/**/*'
+        ])
         .pipe(gulp.dest('./web/'))
         .pipe(notify({ message: 'CRM Deployed' }));
 });
