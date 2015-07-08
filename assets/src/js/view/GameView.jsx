@@ -35,7 +35,7 @@
          */
 
         return (
-            <g className="TetrisGame">
+            <svg className="TetrisGame" viewBox="0 0 1515 890" preserveAspectRatio="xMidYMid meet">
                 <defs>
                     <symbol id='shape-I' viewBox='0 0 99 132'>
                         <rect x="33" y="0" className="TetrisGame-cell--I" width="32.5" height="32.5"/>
@@ -83,7 +83,7 @@
                 <text x="50%" y="70" className="TetrisGame-currentRound">{ 'Round ' + round }</text>
                 { _.map(playerView, PlayerView) }
                 <Overlay winner={ winner } />
-            </g>
+            </svg>
         );
     });
 
