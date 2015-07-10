@@ -4,7 +4,12 @@
         AIGames      = require('aigames'),
         TetrisGame   = require('./game/TetrisGame');
 
-    var game;
+    var game, 
+        displayChrome = true;
+
+    if(window.frameElement.getAttribute("data-indexgame")) {
+        displayChrome = false;
+    }
 
     // Wraps the game for use on TheAIGames website
     // Takes care of setting up and destroying the competition namespace
@@ -13,7 +18,7 @@
             name: 'tetris-battle',
             player: {
                 // Determines whether they player's chrome should be displayed
-                chrome: true,
+                chrome: displayChrome,
                 // Determines whether view selection should be possible
                 viewstack: false,
                 // A number between 0 and 1
