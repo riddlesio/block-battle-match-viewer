@@ -7,16 +7,16 @@ _defaults = {
     },
     "player": {
         "canvas": {
-            "width": 1515,
-            "height": 890
+            "width": 1200,
+            "height": 705
         }
     },
     "field": {
         "width": 10,
         "height": 20,
         "cell": {
-            "width": 33,
-            "height": 33
+            "width": 24,
+            "height": 24
         }
     },
     "boxHeight": 630,

@@ -78,7 +78,7 @@
                                         x       = column * width,
                                         y       = row * height;
 
-                                    return { x, y, width, height, cellType };
+                                    return { row, column, x, y, width, height, cellType };
                                 })
                                 .value()
                         };

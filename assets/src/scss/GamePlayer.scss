@@ -9,7 +9,7 @@ body {
 
 	font-size: 62.5%;
 
-	background: url('/img/background-blockbattle.jpg');
+	background: url('/img/background-blockbattle.png') no-repeat center;
 	background-size: cover;
 }
 
@@ -57,8 +57,8 @@ body {
 	width: 100%;
 	height: 100%;
 
-	// background: url('/img/background-blockbattle.jpg');
-	// background-size: cover;
+	background: url('/img/background-blockbattle.png') no-repeat center;
+	background-size: cover;
 }
 
 .GamePlayer-dropdown {

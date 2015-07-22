@@ -16,10 +16,27 @@
             fieldWidth = field.width * field.cell.width,
             fieldHeight = field.height * field.cell.height,
             name = players.names[children[0]],
-            moveClass = "TetrisGame-playerInfo TetrisGame-playerMove";
+            moveClass = "TetrisGame-playerInfo TetrisGame-playerMove",
+            playerSide = "left",
+            nextBackgroundX = -90.5,
+            nextBlockX = -86,
+            playerNameBackgroundX = -86,
+            playerNameX = -10,
+            playerPointsX = fieldWidth - 55,
+            playerComboX = -17;
 
         if (!_.includes(MoveType, move)) {
             moveClass += " TetrisGame-playerMove-illegal";
+        }
+
+        if (children[0] > 0) {
+            playerSide = "right";
+            nextBackgroundX = fieldWidth + 7.5;
+            nextBlockX = fieldWidth + 8;
+            playerNameBackgroundX = -2;
+            playerNameX = fieldWidth + 10;
+            playerPointsX = 52;
+            playerComboX = fieldWidth + 17;
         }
 
         /**
@@ -33,41 +50,56 @@
          *     settings: Object
          * }
          */
+
+        // <rect className="TetrisGame-grid-background" x="-2" y="-2" width={ fieldWidth + 4 } height={ fieldHeight + 4 } /> 
         return <g
             key={ children[0] }
-            className="TetrisGame-playerView"
+            className={ "TetrisGame-playerView TetrisGame-playerView-" + playerSide }
             transform={ createTransform(children[0], fieldWidth, player.canvas) }>
                 <g className="TetrisGame-grid">
-                    <rect className="TetrisGame-grid-background" x="-2" y="-2" width={ fieldWidth + 4 } height={ fieldHeight + 4 } />
+                    <g dangerouslySetInnerHTML={{
+                        __html: `<use x="-8" y="-8" xlink:href="#grid-background" />`
+                    }} />
                     { _.map(cells, Cell) }
                 </g>
-                <rect className="TetrisGame-playerName-background" x="-2" y="-77" width={ fieldWidth + 4 } height="73" />
+                <g dangerouslySetInnerHTML={{
+                    __html: `<use x="${ playerNameBackgroundX }" y="-93" xlink:href="#background-playername-${ playerSide }" />`
+                }} />
                 <text
-                    x={ fieldWidth / 2 }
-                    y="-30"
+                    x={ playerNameX }
+                    y="-50"
                     className="TetrisGame-playerInfo TetrisGame-playerName">{ name }</text>
                 <text
-                    x={ fieldWidth + 25 }
-                    y="80"
-                    className="TetrisGame-playerInfo TetrisGame-playerPoints">{ 'Points ' + points }</text>
+                    x={ playerPointsX }
+                    y="-40"
+                    className="TetrisGame-playerInfo TetrisGame-playerPoints">{ points }</text>
                 <text
-                    x={ fieldWidth + 25}
-                    y="130"
-                    className="TetrisGame-playerInfo TetrisGame-playerCombo">{ 'Combo ' + combo }</text>
+                    x={ playerComboX }
+                    y="212"
+                    className="TetrisGame-playerInfo TetrisGame-playerCombo TetrisGame-playerCombo-text">{ 'Combo' }</text>
+                <text
+                    x={ playerComboX }
+                    y="240"
+                    className="TetrisGame-playerInfo TetrisGame-playerCombo TetrisGame-playerCombo-combo">{ combo }</text>
                 <g dangerouslySetInnerHTML={{
-                    __html: `<use x="-130" y="30" width="99" height="132" xlink:href="#shape-${ nextShape }" />`
+                    __html: `<use x="${ nextBackgroundX }" y="4" xlink:href="#next-block-${ playerSide }" />`
+                }} />
+                <g dangerouslySetInnerHTML={{
+                    __html: `<use x="${ nextBlockX }" y="53" width="81" height="108" xlink:href="#shape-${ nextShape }" />`
                 }} />
                 <text
                     x={ fieldWidth / 2 }
-                    y={ fieldHeight + 48 }
+                    y={ fieldHeight + 42 }
                     className={ moveClass }>{ move }</text>
             </g>;
     });
 
     function createTransform (index, fieldWidth, canvas) {
 
-        var x = 200 + index * (canvas.width - 400 - fieldWidth),
-            y = 100;
+        var offsetX = 230,
+            offsetY = 120,
+            x = offsetX + index * (canvas.width - 2 * offsetX - fieldWidth),
+            y = offsetY;
 
         return `translate(${x}, ${y})`;
     }

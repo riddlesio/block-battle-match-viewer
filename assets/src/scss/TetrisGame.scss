@@ -15,96 +15,60 @@ html {
 	fill: black;
 }
 
-.TetrisGame-overlayMessage {
-	text-anchor: middle;
-
+.TetrisGame-overlayMessage,
+.TetrisGame-currentRound,
+.TetrisGame-playerInfo {
 	fill: white;
-	font-family: Montserrat;
+	font-family: 'Exo', sans-serif;
+	font-weight: bold;
+	text-anchor: middle;
+}
+
+.TetrisGame-overlayMessage {
 	font-size: 3.5rem;
 }
 
 .TetrisGame-currentRound {
-	text-anchor: middle;
-
-	fill: white;
-	font-family: Montserrat;
 	font-size: 3.5rem;
 }
 
 .TetrisGame-playerInfo {
-	fill: black;
-	font-family: Montserrat;
+	text-anchor: left;
 	font-size: 2.5rem;
 }
 
 .TetrisGame-playerInfo.TetrisGame-playerName {
-	text-anchor: middle;
-	fill: white;
-	font-size: 3.0rem;
+	font-size: 2.1rem;
+	text-anchor: start;
+}
+
+.TetrisGame-playerInfo.TetrisGame-playerPoints {
+	font-size: 2.0rem;
+}
+
+.TetrisGame-playerInfo.TetrisGame-playerCombo-text {
+	font-size: 1.7rem;
+}
+
+.TetrisGame-playerInfo.TetrisGame-playerCombo-combo {
+	font-size: 2.4rem;
 }
 
 .TetrisGame-playerInfo.TetrisGame-playerMove {
-	text-anchor: middle;
 	font-size: 2rem;
 }
 
+.TetrisGame-playerView-right .TetrisGame-playerInfo.TetrisGame-playerCombo {
+	text-anchor: start;
+}
+
+.TetrisGame-playerView-right .TetrisGame-playerInfo.TetrisGame-playerName,
+.TetrisGame-playerView-left .TetrisGame-playerInfo.TetrisGame-playerCombo {
+	text-anchor: end;
+}
+
+
+
 .TetrisGame-playerMove-illegal {
 	fill: rgb(250, 167, 25);
-}
-
-.TetrisGame-playerInfo.TetrisGame-nextShape {
-	font-size: 3.0rem;
-}
-
-.TetrisGame-grid-background {
-	fill: rgb(32, 45, 63);
-	stroke: rgb(10, 18, 29);
-	stroke-width: 5px;
-}
-
-.TetrisGame-playerName-background {
-	fill: none;
-	stroke: rgb(10, 18, 29);
-	stroke-width: 5px;
-}
-
-.TetrisGame-cell {
-	stroke: none;
-	// stroke-width: 1px;
-}
-
-.TetrisGame-cell--3 {
-	fill: rgb(10, 18, 29);
-}
-
-.TetrisGame-cell--I {
-	fill: rgb(250, 167, 26);
-}
-
-.TetrisGame-cell--J {
-	fill: rgb(112, 96, 170);
-}
-
-.TetrisGame-cell--L {
-	fill: rgb(142, 176, 62);
-}
-
-.TetrisGame-cell--O {
-	fill: rgb(53, 151, 211);
-}
-
-.TetrisGame-cell--S {
-	fill: rgb(232, 76, 60);
-}
-
-.TetrisGame-cell--T {
-	fill: rgb(254, 206, 9);
-}
-
-.TetrisGame-cell--Z {
-	fill: rgb(212, 92, 160);
-}
-
-.TetrisGame-cell--0 {
-	fill: rgb(219, 225, 240);
 }
