@@ -85,6 +85,9 @@
                     <symbol id="block-Z" dangerouslySetInnerHTML={{
                         __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-Z.svg" />`
                     }} />
+                    <symbol id="block-G" dangerouslySetInnerHTML={{
+                        __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-G.svg" />`
+                    }} />
                     <symbol id="block-I-nobkg" dangerouslySetInnerHTML={{
                         __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-I-nobkg.svg" />`
                     }} />

@@ -7,6 +7,7 @@ assets/vendor
 node_modules
 web/css
 web/js
+web/img
 
 # ignore compiled files
 assets/src/css/*.css
