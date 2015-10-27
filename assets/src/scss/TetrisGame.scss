@@ -46,11 +46,13 @@ html {
 	font-size: 2.0rem;
 }
 
-.TetrisGame-playerInfo.TetrisGame-playerCombo-text {
+.TetrisGame-playerInfo.TetrisGame-playerCombo-text,
+.TetrisGame-playerInfo.TetrisGame-playerSkips-text {
 	font-size: 1.7rem;
 }
 
-.TetrisGame-playerInfo.TetrisGame-playerCombo-combo {
+.TetrisGame-playerInfo.TetrisGame-playerCombo-combo,
+.TetrisGame-playerInfo.TetrisGame-playerSkips-skips {
 	font-size: 2.4rem;
 }
 
@@ -58,12 +60,14 @@ html {
 	font-size: 2rem;
 }
 
-.TetrisGame-playerView-right .TetrisGame-playerInfo.TetrisGame-playerCombo {
+.TetrisGame-playerView-right .TetrisGame-playerInfo.TetrisGame-playerCombo,
+.TetrisGame-playerView-right .TetrisGame-playerInfo.TetrisGame-playerSkips {
 	text-anchor: start;
 }
 
 .TetrisGame-playerView-right .TetrisGame-playerInfo.TetrisGame-playerName,
-.TetrisGame-playerView-left .TetrisGame-playerInfo.TetrisGame-playerCombo {
+.TetrisGame-playerView-left .TetrisGame-playerInfo.TetrisGame-playerCombo,
+.TetrisGame-playerView-left .TetrisGame-playerInfo.TetrisGame-playerSkips {
 	text-anchor: end;
 }
 

@@ -63,10 +63,11 @@
                     winner,
                     players: _.map(players, function (player) {
 
-                        var { field, combo, points, move } = player;
+                        var { field, combo, skips, points, move } = player;
 
                         return {
                             combo,
+                            skips,
                             points,
                             move,
                             cells: _

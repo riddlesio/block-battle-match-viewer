@@ -11,7 +11,7 @@
 
     PlayerView = createView('PlayerView', function (props) {
 
-        var { combo, points, move, cells, nextShape, settings, children } = props,
+        var { combo, skips, points, move, cells, nextShape, settings, children } = props,
             { field, player, players } = settings,
             fieldWidth = field.width * field.cell.width,
             fieldHeight = field.height * field.cell.height,
@@ -81,6 +81,14 @@
                     x={ playerComboX }
                     y="240"
                     className="TetrisGame-playerInfo TetrisGame-playerCombo TetrisGame-playerCombo-combo">{ combo }</text>
+                <text
+                    x={ playerComboX }
+                    y="280"
+                    className="TetrisGame-playerInfo TetrisGame-playerSkips TetrisGame-playerSkips-text">{ 'Skips' }</text>
+                <text
+                    x={ playerComboX }
+                    y="308"
+                    className="TetrisGame-playerInfo TetrisGame-playerSkips TetrisGame-playerSkips-skips">{ skips }</text>
                 <g dangerouslySetInnerHTML={{
                     __html: `<use x="${ nextBackgroundX }" y="4" xlink:href="#next-block-${ playerSide }" />`
                 }} />
