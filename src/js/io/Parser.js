@@ -10,15 +10,6 @@
      */
     Parser = {
 
-        parsePlayerNames: function (settings) {
-
-            var names = window.frameElement.getAttribute("data-players").split(",");
-
-            settings.players.names = names;
-
-            return settings;
-        },
-
         parseMoveSet: function (states) {
 
             var currentRound;
@@ -53,8 +44,8 @@
 
                 var { players, round, nextShape, winner } = state;
 
-                if(winner) {
-                    winner = settings.players.names[parseInt(winner.replace("player", "")) - 1];
+                if (winner) {
+                    winner = settings.players.names[parseInt(winner.replace('player', '')) - 1];
                 }
 
                 return {
@@ -81,12 +72,12 @@
 
                                     return { row, column, x, y, width, height, cellType };
                                 })
-                                .value()
+                                .value(),
                         };
-                    })
+                    }),
                 };
             });
-        }
+        },
     };
 
     module.exports = Parser;

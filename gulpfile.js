@@ -1,105 +1,63 @@
-const
-    gulp        = require('gulp'),
-    compass     = require('gulp-compass'),
-    cssmin      = require('gulp-minify-css'),
-    notify      = require('gulp-notify'),
-    plumber     = require('gulp-plumber'),
-    rename      = require('gulp-rename'),
-    uglify      = require('gulp-uglifyjs'),
-    prefix      = require('gulp-autoprefixer'),
-    browserify  = require('browserify'),
-    babelify    = require('babelify'),
-    // reactify    = require('reactify'),
-    buffer      = require('vinyl-buffer'),
-    sequence    = require('run-sequence'),
-    source      = require('vinyl-source-stream'),
-    srcDir      = './assets/src/';
+const commander   = require('commander');
+const gulp        = require('gulp');
+const plumber     = require('gulp-plumber');
+const copy        = require('@riddles/gulp-copy');
+const webpack     = require('@riddles/gulp-js');
+const css         = require('@riddles/gulp-css');
+const images      = require('@riddles/gulp-images');
+const config      = require('./gulp/config.json');
 
-var vendors = [
-    'lodash',
-    'omniscient',
-    'react',
-    ''
-]
+commander
+    .version('1.0.0')
+    .usage('gulp build [flags]')
+    .option('--debug',  'Enables debug code and disables minification')
+    .option('--dev',    'Instructs compiler to use development config')
+    .option('--prod',   'Instructs compiler to use production config')
+    .option('--aigames', 'Instructs compiler to target the AIGames platform')
+    .option('--riddles', 'Instructs compiler to target the Riddles.io platform')
+    .parse(process.argv);
 
-var handleError = function (error) {
-    console.log(error);
-};
+const environment = buildEnvironment(commander);
 
-gulp.task('deploy', function () {
+process.stdout.write('\n');
+process.stdout.write('Task config:\n');
+process.stdout.write(' platform = ' + environment.platform + '\n');
+process.stdout.write(' target   = ' + environment.target + '\n');
+process.stdout.write(' debug    = ' + environment.debug + '\n');
+process.stdout.write('\n');
+
+function buildEnvironment(argv) {
+
+    const debug    = !!argv.debug;
+    const target   = argv.prod ? 'PROD' : 'DEV';
+    const platform = argv.prod && argv.riddles ? 'RIDDLES'
+        : argv.prod && argv.aigames ? 'AI_GAMES'
+        : 'LOCAL';
+    return {
+        debug:  debug,
+        platform: platform,
+        target: target,
+    };
+}
+
+function streamFactory(source) {
+
     return gulp
-        .src([
-            './assets/dev/**/*',
-            './assets/prod/**/*'
-        ])
-        .pipe(gulp.dest('./web/'))
-        .pipe(notify({ message: 'CRM Deployed' }));
-});
+        .src(source)
+        .pipe(plumber({ errorHandler: console.log.bind(console) }));
+}
 
-gulp.task('js:vendor', function () {
+function buildConfig(taskName) {
 
-});
+    return Object.assign(
+        { environment: environment },
+        config[taskName]
+    );
+}
 
-gulp.task('sass', function () {
-    return gulp
-        .src('./assets/src/scss/*.scss')
-        .pipe(plumber({ errorHandler: handleError }))
-        .pipe(compass({
-            css: 'assets/dev/css',
-            sass: 'assets/src/scss',
-            sourcemap: true
-        }))
-        .pipe(prefix({ browsers: ['last 2 versions'] }))
-        .pipe(gulp.dest('./assets/dev/css'))
-        .pipe(cssmin({ keepSpecialComments:0 }))
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('./assets/prod/css/'))
-        .pipe(notify({ message: 'CRM Sass compiled' }));
-});
+gulp.task('copyHtml', copy(streamFactory, gulp.dest, buildConfig('copyHtml')));
+gulp.task('images', images(streamFactory, gulp.dest, buildConfig('images')));
+gulp.task('css',    css(streamFactory, gulp.dest, buildConfig('css')));
+gulp.task('js',     webpack(streamFactory, gulp.dest, buildConfig('webpack')));
 
-gulp.task('img', function () {
-    return gulp.src('./assets/src/img/*')
-        .pipe(gulp.dest('./assets/dev/img/'))
-        .pipe(notify({ message: 'Images copied' }));
-});
-
-gulp.task('js:minify', function () {
-    return gulp.src('./assets/dev/js/*')
-        .pipe(uglify())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('./assets/prod/js/'))
-        .pipe(notify({ message: 'Js Minified' }));
-});
-
-gulp.task('js:compile', function () {
-
-    var bundler,
-        stream;
-
-    bundler = browserify([srcDir + 'js/bootstrap.js'], {
-        debug:   true,
-    });
-
-    stream = bundler
-        .transform(babelify)
-        .bundle();
-
-    return stream
-        .pipe(plumber({ errorHandler: handleError }))
-        .pipe(source(srcDir + 'js/bootstrap.js'))
-        .pipe(buffer())
-        .pipe(rename('app.js'))
-        .pipe(gulp.dest('./assets/dev/js'))
-        .pipe(notify({ message: 'JS Compiled' }));
-});
-
-gulp.task('js', function () {
-    sequence('js:compile', 'js:minify', 'img');
-});
-
-gulp.task('watch', function () {
-    gulp.watch(['assets/src/js/**/*'], ['js']);
-    gulp.watch(['assets/src/scss/**/*'], ['sass']);
-    // checks on changes from the directory with compiled 'css' and 'js' on './assets/prod/**/*'
-    gulp.watch(['./assets/prod/css/*', './assets/prod/js/*'], ['deploy']);
-});
+gulp.task('build', ['js', 'css', 'images', 'copyHtml']);
