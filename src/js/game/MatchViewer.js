@@ -59,7 +59,7 @@ const MatchViewer = createGame({
         // this.play();
 
         this.setMoves(moves)
-            .setState({ currentState })
+            .triggerStateChange({ currentState })
             .play();
     },
 

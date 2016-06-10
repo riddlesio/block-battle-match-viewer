@@ -7,7 +7,7 @@ const SimpleGameLoopMixin = {
 
     applyTo: function (context) {
 
-        var mixin = {
+        const mixin = {
 
             /**
              * Moves the game forward by one step
@@ -17,8 +17,10 @@ const SimpleGameLoopMixin = {
                 const { currentState } = this.getState();
 
                 if (currentState !== this.states.length - 1) {
+
                     this.triggerStateChange(currentState + 1);
                 } else {
+
                     this.pause();
                 }
             },
@@ -28,21 +30,18 @@ const SimpleGameLoopMixin = {
              */
             roundForward: function () {
 
-                var currentRound,
-                    nextState,
-                    self = this,
-                    states = self.states,
-                    { currentState } = self.getState();
+                const states = this.states;
+                const { currentState } = this.getState();
+                const currentRound = states[currentState].round;
 
-                currentRound = states[currentState].round;
-                nextState    = _.findIndex(states, { round: currentRound + 1 });
+                let nextState = _.findIndex(states, { round: currentRound + 1 });
 
                 if (-1 === nextState) {
 
                     nextState = states.length - 1;
                 }
 
-                self.triggerStateChange(nextState);
+                this.triggerStateChange(nextState);
             },
 
             /**
@@ -50,12 +49,11 @@ const SimpleGameLoopMixin = {
              */
             moveBackward: function () {
 
-                var self = this,
-                    { currentState } = self.getState();
+                const { currentState } = this.getState();
 
                 if (0 < currentState) {
 
-                    self.triggerStateChange(currentState - 1);
+                    this.triggerStateChange(currentState - 1);
                 }
             },
 
@@ -64,20 +62,17 @@ const SimpleGameLoopMixin = {
              */
             roundBackward: function () {
 
-                var currentRound,
-                    nextState,
-                    self = this,
-                    states = self.states,
-                    { currentState } = self.getState();
+                const states = this.states;
+                const { currentState } = this.getState();
+                const currentRound  = states[currentState].round;
 
-                currentRound = states[currentState].round;
-                nextState    = _.findIndex(states, { round: currentRound - 1 });
+                let nextState = _.findIndex(states, { round: currentRound - 1 });
 
                 if (-1 === nextState) {
                     nextState = 0;
                 }
 
-                self.triggerStateChange(nextState);
+                this.triggerStateChange(nextState);
             },
 
             /**
@@ -103,11 +98,9 @@ const SimpleGameLoopMixin = {
 
             setMove: function ({ state }) {
 
-                var self = this;
+                if (-1 < state && state < this.states.length) {
 
-                if (-1 < state && state < self.states.length) {
-
-                    self.setState({ currentState: state });
+                    this.setState({ currentState: state });
                     return;
                 }
 
