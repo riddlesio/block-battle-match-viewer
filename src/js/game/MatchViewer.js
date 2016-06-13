@@ -6,7 +6,7 @@ import StateMixin                       from '../mixin/StateMixin';
 import GameLoopMixin                    from '../mixin/SimpleGameLoopMixin';
 import { parseStates, parseMoveSet, parsePlayerNames } from '../io/Parser';
 import GameView                         from '../view/GameView.jsx';
-import _defaults                        from '../data/gameDefaults.json';
+import defaults                        from '../data/gameDefaults.json';
 
 const { PlaybackEvent } = event;
 
@@ -37,7 +37,7 @@ const MatchViewer = createGame({
     },
 
     getDefaults: function () {
-        return _defaults;
+        return defaults;
     },
 
     /**
@@ -46,21 +46,24 @@ const MatchViewer = createGame({
      */
     handleData: function (data) {
 
+        let settings;
         const currentState = 0;
-        const settings = _.merge(this.getDefaults(), data.playerData);
-        const states   = parseStates(data.matchData, settings);
-        const moves    = parseMoveSet(states);
+        const matchData = data.matchData;
+        const playerData = data.playerData;
+
+        settings = matchData.settings;
+        settings = _.merge(this.getDefaults(), settings);
+        settings = parsePlayerNames(playerData, settings);
+
+        const states = parseStates(matchData, settings);
+        const moves = parseMoveSet(states);
 
         this.settings = settings;
         this.states   = states;
 
-        // this.setMoves(moves);
-        // this.triggerStateChange(currentState);
-        // this.play();
-
-        this.setMoves(moves)
-            .triggerStateChange({ currentState })
-            .play();
+        this.setMoves(moves);
+        this.triggerStateChange(currentState);
+        this.play();
     },
 
     /**

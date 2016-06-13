@@ -1,46 +1,35 @@
-(function (undefined) {
+import React from 'react';
+import createView from 'omniscient';
 
-    const
-        React      = require('react'),
-        createView = require('omniscient'),
-        classNames = require('classnames'),
-        CellType   = require('../enum/CellType');
+const Cell = createView(function (data) {
 
-    var Cell;
+    /**
+     * Data should have the following structure:
+     * {
+     *    row: Number,
+     *    column: Number,
+     *    x: Number,
+     *    y: Number,
+     *    cellType: String
+     * }
+     */
 
-    Cell = createView(function (data) {
+    const { row, column, x, y, cellType } = data;
+    let imgId = '#block-' + cellType;
 
-        /**
-         * Data should have the following structure:
-         * {
-         *    row: Number,
-         *    column: Number,
-         *    x: Number,
-         *    y: Number,
-         *    width: Number,
-         *    height: Number,
-         *    cellType: String
-         * }
-         */
-
-        var className,
-            { row, column, x, y, width, height, cellType } = data,
-            imgId = "#block-" + cellType;
-
-        if (cellType === "0") {
-            if ( (row + column) % 2 == 0 ) {
-                imgId += "-dark";
-            } else {
-                imgId += "-light";
-            }
+    if (cellType === '0') {
+        if ((row + column) % 2 == 0) {
+            imgId += '-dark';
+        } else {
+            imgId += '-light';
         }
+    }
 
-        return (
-            <g dangerouslySetInnerHTML={{
-                __html: `<use x="${ x }" y="${ y }" xlink:href="${ imgId }" />`
-            }} />
-        );
-    });
+    return (
+        <g dangerouslySetInnerHTML={{
+            __html: `<use x="${x}" y="${y}" xlink:href="${imgId}" />`,
+        }} />
+    );
+});
 
-    module.exports = Cell;
-}());
+export default Cell;

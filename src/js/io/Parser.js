@@ -1,84 +1,92 @@
-(function () {
+import _ from 'lodash';
 
-    const _ = require('lodash');
+function parsePlayerNames(playerData, settings) {
 
-    var Parser;
+    settings.players.names = [];
+    settings.players.emailHash = [];
 
-    /**
-     * Singleton containing several utility functions for data parsing
-     * @type {Object}
-     */
-    Parser = {
+    playerData.forEach((player) => {
+        const name = player.name ? player.name : '';
+        const hash = player.emailHash ? player.emailHash : '';
 
-        parseMoveSet: function (states) {
+        settings.players.names.push(name);
+        settings.players.emailHash.push(hash);
+    });
 
-            var currentRound;
+    return settings;
+}
 
-            return _
-                .chain(states)
-                .map(function (state, index) {
+function parseMoveSet(states) {
 
-                    var label,
-                        { round } = state;
+    let currentRound;
 
-                    if (currentRound === round) {
-                        return false;
-                    }
+    return _
+        .chain(states)
+        .map(function (state, index) {
 
-                    currentRound = round;
-                    label = `Round ${round}`;
+            let label;
+            const { round } = state;
 
-                    return { label, value: index };
-                })
-                .compact()
-                .value();
-        },
+            if (currentRound === round) return false;
 
-        parseStates: function (data, settings) {
+            currentRound = round;
+            label = `Round ${round}`;
 
-            var fieldSettings       = settings.field,
-                fieldWidth          = fieldSettings.width,
-                { width, height }   = fieldSettings.cell;
+            return { label, value: index };
+        })
+        .compact()
+        .value();
+}
 
-            return _.map(data.states, function (state) {
+function parseStates(data, settings) {
 
-                var { players, round, nextShape, winner } = state;
+    const fieldSettings     = settings.field;
+    const fieldWidth        = fieldSettings.width;
+    const { width, height } = fieldSettings.cell;
 
-                if (winner) {
-                    winner = settings.players.names[parseInt(winner.replace('player', '')) - 1];
-                }
+    return _.map(data.states, function (state) {
+
+        const { players, round, nextShape } = state;
+        let { winner } = state;
+
+        if (winner) {
+            winner = settings.players.names[parseInt(winner.replace('player', '')) - 1];
+        }
+
+        return {
+            round,
+            nextShape,
+            winner,
+            players: _.map(players, function (player) {
+
+                const { field, combo, skips, points, move } = player;
 
                 return {
-                    round,
-                    nextShape,
-                    winner,
-                    players: _.map(players, function (player) {
+                    combo,
+                    skips,
+                    points,
+                    move,
+                    cells: _
+                        .chain(field)
+                        .thru((string) => string.split(/,|;/))
+                        .map(function (cellType, index) {
+                            const row    = Math.floor(index / fieldWidth);
+                            const column = index % fieldWidth;
+                            const x      = column * width;
+                            const y      = row * height;
 
-                        var { field, combo, skips, points, move } = player;
-
-                        return {
-                            combo,
-                            skips,
-                            points,
-                            move,
-                            cells: _
-                                .chain(field)
-                                .thru((string) => string.split(/,|;/))
-                                .map(function (cellType, index) {
-                                    var row     = Math.floor(index / fieldWidth),
-                                        column  = index % fieldWidth,
-                                        x       = column * width,
-                                        y       = row * height;
-
-                                    return { row, column, x, y, width, height, cellType };
-                                })
-                                .value(),
-                        };
-                    }),
+                            return { row, column, x, y, width, height, cellType };
+                        })
+                        .value(),
                 };
-            });
-        },
-    };
+            }),
+        };
+    });
+}
 
-    module.exports = Parser;
-}());
+export {
+    parsePlayerNames,
+    parseStates,
+    parseMoveSet,
+};
+

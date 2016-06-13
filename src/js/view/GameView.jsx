@@ -1,26 +1,25 @@
-const
-    _           = require('lodash'),
-    React       = require('react'),
-    createView  = require('omniscient'),
-    PlayerView  = require('./PlayerView.jsx'),
-    Overlay     = require('./Overlay.jsx').jsx;
+import React from 'react';
+import createView from 'omniscient';
+import _ from 'lodash';
+import PlayerView  from './PlayerView.jsx';
+import Overlay from './Overlay.jsx';
 
 const GameView = createView('GameView', function (props) {
 
-    var { state, settings } = props,
-        { players, round, nextShape, winner } = state,
-        { player, field } = settings,
-        playerView = [],
-        cell = field.cell,
-        canvas = player.canvas,
-        fieldWidth = field.width * cell.width,
-        fieldHeight = field.height * cell.height;
+    const { state, settings } = props;
+    const { players, round, nextShape, winner } = state;
+    const { player, field } = settings;
+    const cell = field.cell;
+    const canvas = player.canvas;
+    const fieldWidth = field.width * cell.width;
+    const fieldHeight = field.height * cell.height;
 
+    let playerView = [];
 
     _.forEach(players, function (player) {
         playerView.push(_.assign({
-            "settings": settings,
-            "nextShape": nextShape
+            settings: settings,
+            nextShape: nextShape,
         }, player));
     });
 
@@ -37,76 +36,76 @@ const GameView = createView('GameView', function (props) {
      */
 
     return (
-        <svg className="TetrisGame" viewBox={ "0 0 " + canvas.width + " " + canvas.height } preserveAspectRatio="xMidYMid meet">
+        <svg className="TetrisGame" viewBox={ `0 0 ${canvas.width} ${canvas.height}` } preserveAspectRatio="xMidYMid meet">
             <defs>
                 <symbol id="background-playername-left" dangerouslySetInnerHTML={{
-                    __html: `<image width="328" height="71" xlink:href="./img/background-playername-red.svg" />`
+                    __html: `<image width="328" height="71" xlink:href="./img/background-playername-red.svg" />`,
                 }} />
                 <symbol id="background-playername-right" dangerouslySetInnerHTML={{
-                    __html: `<image width="328" height="71" xlink:href="./img/background-playername-blue.svg" />`
+                    __html: `<image width="328" height="71" xlink:href="./img/background-playername-blue.svg" />`,
                 }} />
                 <symbol id="next-block-left" dangerouslySetInnerHTML={{
-                    __html: `<image width="85" height="184" xlink:href="./img/next-block-left.svg" />`
+                    __html: `<image width="85" height="184" xlink:href="./img/next-block-left.svg" />`,
                 }} />
                 <symbol id="next-block-right" dangerouslySetInnerHTML={{
-                    __html: `<image width="85" height="184" xlink:href="./img/next-block-right.svg" />`
+                    __html: `<image width="85" height="184" xlink:href="./img/next-block-right.svg" />`,
                 }} />
                 <symbol id="grid-background" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ fieldWidth + 18 }" height="${ fieldHeight + 18 }" xlink:href="./img/field-background.svg" />`
+                    __html: `<image width="${ fieldWidth + 18 }" height="${ fieldHeight + 18 }" xlink:href="./img/field-background.svg" />`,
                 }} />
                 <symbol id="block-0-light" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/grid-block-light.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/grid-block-light.svg" />`,
                 }} />
                 <symbol id="block-0-dark" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/grid-block-dark.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/grid-block-dark.svg" />`,
                 }} />
                 <symbol id="block-I" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-I.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-I.svg" />`,
                 }} />
                 <symbol id="block-J" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-J.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-J.svg" />`,
                 }} />
                 <symbol id="block-L" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-L.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-L.svg" />`,
                 }} />
                 <symbol id="block-O" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-O.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-O.svg" />`,
                 }} />
                 <symbol id="block-S" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-S.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-S.svg" />`,
                 }} />
                 <symbol id="block-T" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-T.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-T.svg" />`,
                 }} />
                 <symbol id="block-Z" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-Z.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-Z.svg" />`,
                 }} />
                 <symbol id="block-G" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-G.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-G.svg" />`,
                 }} />
                 <symbol id="block-I-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-I-nobkg.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-I-nobkg.svg" />`,
                 }} />
                 <symbol id="block-J-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-J-nobkg.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-J-nobkg.svg" />`,
                 }} />
                 <symbol id="block-L-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-L-nobkg.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-L-nobkg.svg" />`,
                 }} />
                 <symbol id="block-O-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-O-nobkg.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-O-nobkg.svg" />`,
                 }} />
                 <symbol id="block-S-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-S-nobkg.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-S-nobkg.svg" />`,
                 }} />
                 <symbol id="block-T-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-T-nobkg.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-T-nobkg.svg" />`,
                 }} />
                 <symbol id="block-Z-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-Z-nobkg.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-Z-nobkg.svg" />`,
                 }} />
                 <symbol id="block-3" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-3.svg" />`
+                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-3.svg" />`,
                 }} />
                 <symbol id='shape-I' viewBox={ "0 0 " + (cell.width * 3) + " " + (cell.height * 4) }>
                     <g dangerouslySetInnerHTML={{ __html: `<use x="${ cell.width }" y="0" xlink:href="#block-I-nobkg" />` }} />

@@ -1,17 +1,13 @@
-(function (undefined) {
+const CellType = {
+    I: 'I',
+    J: 'J',
+    L: 'L',
+    O: 'O',
+    S: 'S',
+    T: 'T',
+    Z: 'Z',
+    SOLID: 3,
+    EMPTY: 0,
+};
 
-    // not used currently?
-    const CellType = {
-        I: "I",
-        J: "J",
-        L: "L",
-        O: "O",
-        S: "S",
-        T: "T",
-        Z: "Z",
-        SOLID: 3, //solid cell
-        EMPTY: 0
-    };
-
-    module.exports = CellType;
-}());
+export default CellType;
