@@ -6,19 +6,20 @@ import StateMixin                       from '../mixin/StateMixin';
 import GameLoopMixin                    from '../mixin/SimpleGameLoopMixin';
 import { parseStates, parseMoveSet, parsePlayerNames } from '../io/Parser';
 import GameView                         from '../view/GameView.jsx';
-import defaults                        from '../data/gameDefaults.json';
+import defaults                         from '../data/gameDefaults.json';
 
 const { PlaybackEvent } = event;
 
 /**
- * BlockBattle class
+ * BlockBattle
+ * MatchViewer class
  * @constructor
  */
 const MatchViewer = createGame({
 
     /**
      * BlockBattle construct function
-     * Automatically executed when instantiating the BlockBattle class
+     * Automatically executed when instantiating the MatchViewer class
      * @param  {Object} options
      */
     construct: function (options) {
@@ -50,6 +51,8 @@ const MatchViewer = createGame({
         const currentState = 0;
         const matchData = data.matchData;
         const playerData = data.playerData;
+
+        console.log(playerData);
 
         settings = matchData.settings;
         settings = _.merge(this.getDefaults(), settings);
@@ -89,7 +92,7 @@ const MatchViewer = createGame({
 
 /**
  * Register the event listeners
- * @param {BlockBattle} context
+ * @param {MatchViewer} context
  */
 function registerEventListeners(context) {
 
@@ -104,7 +107,7 @@ function registerEventListeners(context) {
 
 /**
  * Release the event listeners
- * @param {TetrisGame} context
+ * @param {MatchViewer} context
  */
 function releaseEventListeners(context) {
 
