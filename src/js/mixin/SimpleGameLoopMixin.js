@@ -45,6 +45,16 @@ const SimpleGameLoopMixin = {
             },
 
             /**
+             * Moves the game forward to the last state
+             */
+            fastForward: function () {
+
+                const nextState = this.states.length - 1;
+
+                this.triggerStateChange(nextState);
+            },
+
+            /**
              * Moves the game backward by one step
              */
             moveBackward: function () {
@@ -71,6 +81,16 @@ const SimpleGameLoopMixin = {
                 if (-1 === nextState) {
                     nextState = 0;
                 }
+
+                this.triggerStateChange(nextState);
+            },
+
+            /**
+             * Moves the game backward to the first state
+             */
+            fastBackward: function () {
+
+                const nextState = 0;
 
                 this.triggerStateChange(nextState);
             },

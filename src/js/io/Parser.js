@@ -16,27 +16,27 @@ function parsePlayerNames(playerData, settings) {
     return settings;
 }
 
-function parseMoveSet(states) {
-
-    let currentRound;
-
-    return _
-        .chain(states)
-        .map(function (state, index) {
-
-            let label;
-            const { round } = state;
-
-            if (currentRound === round) return false;
-
-            currentRound = round;
-            label = `Round ${round}`;
-
-            return { label, value: index };
-        })
-        .compact()
-        .value();
-}
+// function parseMoveSet(states) {
+//
+//     let currentRound;
+//
+//     return _
+//         .chain(states)
+//         .map(function (state, index) {
+//
+//             let label;
+//             const { round } = state;
+//
+//             if (currentRound === round) return false;
+//
+//             currentRound = round;
+//             label = `Round ${round}`;
+//
+//             return { label, value: index };
+//         })
+//         .compact()
+//         .value();
+// }
 
 function parseStates(data, settings) {
 
@@ -87,6 +87,5 @@ function parseStates(data, settings) {
 export {
     parsePlayerNames,
     parseStates,
-    parseMoveSet,
 };
 

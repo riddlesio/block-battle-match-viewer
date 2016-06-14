@@ -4,7 +4,7 @@ import ReactDOM                         from 'react-dom';
 import { createGame, event }            from '@riddles/match-viewer';
 import StateMixin                       from '../mixin/StateMixin';
 import GameLoopMixin                    from '../mixin/SimpleGameLoopMixin';
-import { parseStates, parseMoveSet, parsePlayerNames } from '../io/Parser';
+import { parseStates, parsePlayerNames } from '../io/Parser';
 import GameView                         from '../view/GameView.jsx';
 import defaults                         from '../data/gameDefaults.json';
 
@@ -59,12 +59,10 @@ const MatchViewer = createGame({
         settings = parsePlayerNames(playerData, settings);
 
         const states = parseStates(matchData, settings);
-        const moves = parseMoveSet(states);
 
         this.settings = settings;
         this.states   = states;
 
-        this.setMoves(moves);
         this.triggerStateChange(currentState);
         this.play();
     },
@@ -100,9 +98,9 @@ function registerEventListeners(context) {
     PlaybackEvent.on(PlaybackEvent.PAUSE, context.pause, context);
     PlaybackEvent.on(PlaybackEvent.FORWARD, context.moveForward, context);
     PlaybackEvent.on(PlaybackEvent.GOTO, context.setMove, context);
-    PlaybackEvent.on(PlaybackEvent.FAST_FORWARD, context.roundForward, context);
+    PlaybackEvent.on(PlaybackEvent.FAST_FORWARD, context.fastForward, context);
     PlaybackEvent.on(PlaybackEvent.BACKWARD, context.moveBackward, context);
-    PlaybackEvent.on(PlaybackEvent.FAST_BACKWARD, context.roundBackward, context);
+    PlaybackEvent.on(PlaybackEvent.FAST_BACKWARD, context.fastBackward, context);
 }
 
 /**
