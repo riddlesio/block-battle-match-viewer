@@ -52,8 +52,6 @@ const MatchViewer = createGame({
         const matchData = data.matchData;
         const playerData = data.playerData;
 
-        console.log(playerData);
-
         settings = matchData.settings;
         settings = _.merge(this.getDefaults(), settings);
         settings = parsePlayerNames(playerData, settings);
