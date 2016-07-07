@@ -52,6 +52,16 @@ module.exports = function (config) {
         ],
     };
 
+    if (environment.target == 'PROD') {
+        webpackConfig.plugins.push(
+            new webpack.DefinePlugin({
+                'process.env':{
+                    NODE_ENV: JSON.stringify('production'),
+                },
+            })
+        );
+    }
+
     if (environment.debug) {
         // Gives you sourcemaps without slowing down rebundling
         webpackConfig.devtool = 'eval-source-map';
