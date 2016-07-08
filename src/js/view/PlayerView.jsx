@@ -53,14 +53,16 @@ const PlayerView = createView('PlayerView', function (props) {
             transform={ createTransform(children[0], fieldWidth, player.canvas) }
         >
             <g className="TetrisGame-grid">
-                <g dangerouslySetInnerHTML={{
-                    __html: `<use x="-8" y="-8" xlink:href="#grid-background" />`,
-                }} />
+                <use x="-8" y="-8" xlinkHref="#grid-background" />
                 { _.map(cells, Cell) }
             </g>
-            <g dangerouslySetInnerHTML={{
-                __html: `<use x="${playerNameBackgroundX}" y="-93" xlink:href="#background-playername-${playerSide}" />`,
-            }} />
+            <use
+                width="328"
+                height="71"
+                x={ playerNameBackgroundX }
+                y="-93"
+                xlinkHref={ `#background-playername-${playerSide}` }
+            />
             <text
                 x={ playerNameX }
                 y="-50"
@@ -103,7 +105,7 @@ const PlayerView = createView('PlayerView', function (props) {
             >
                 { skips }
             </text>
-            <use x={ nextBackgroundX } y="4" xlinkHref={ `#next-block-${playerSide}` } />
+            <use width="85" height="184" x={ nextBackgroundX } y="4" xlinkHref={ `#next-block-${playerSide}` } />
             <use
                 x={ nextBlockX }
                 y="53"
