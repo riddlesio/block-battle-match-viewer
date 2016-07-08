@@ -90,9 +90,18 @@ const GameView = createView('GameView', function (props) {
                     <path fill="#FFFFFF" d="M39.9,25l4.9-7l-4.9-7h4.5l2.6,4.2l2.7-4.2h4.5l-4.9,7.1L54,25h-4.3L47,20.8L44.4,25H39.9z"/>
                     <path fill="#FFFFFF" d="M55,14v-2.5l2.3-0.7L57.9,7H61v4h3v3h-3v5.2c0,1,0.1,1.6,0.3,2c0.2,0.4,0.5,0.6,0.9,0.8c1.1,0.4,1.8,0.6,1.8,0.6V25h-3.2c-2.3,0-3.8-1.8-3.8-5.2V14H55z"/>
                 </symbol>
-                <symbol id="grid-background" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ fieldWidth + 18 }" height="${ fieldHeight + 18 }" xlink:href="./img/field-background.svg" />`,
-                }} />
+                <symbol id="grid-background" viewBox="0 0 288 558" width={ fieldWidth + 18 } height={ fieldHeight + 18 }>
+                    <g>
+                        <g>
+                            <path d="M10,557c-5,0-9-4-9-9V10c0-5,4-9,9-9h268c5,0,9,4,9,9v538c0,5-4,9-9,9H10z"/>
+                            <path fill="#FFFFFF" d="M278,2c4.4,0,8,3.6,8,8v538c0,4.4-3.6,8-8,8H10c-4.4,0-8-3.6-8-8V10c0-4.4,3.6-8,8-8H278 M278,0H10
+					C4.5,0,0,4.5,0,10v538c0,5.5,4.5,10,10,10h268c5.5,0,10-4.5,10-10V10C288,4.5,283.5,0,278,0L278,0z"/>
+                        </g>
+                        <g>
+                            <path fill="#2F2F2F" d="M277,551H9c-2.2,0-4-1.8-4-4V9c0-2.2,1.8-4,4-4h268c2.2,0,4,1.8,4,4v538C281,549.2,279.2,551,277,551z"/>
+                        </g>
+                    </g>
+                </symbol>
                 <symbol id="block-0-light" dangerouslySetInnerHTML={{
                     __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/grid-block-light.svg" />`,
                 }} />
