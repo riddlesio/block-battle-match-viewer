@@ -53,7 +53,13 @@ const PlayerView = createView('PlayerView', function (props) {
             transform={ createTransform(children[0], fieldWidth, player.canvas) }
         >
             <g className="TetrisGame-grid">
-                <use x="-8" y="-8" xlinkHref="#grid-background" />
+                <use
+                    x="-8"
+                    y="-8"
+                    xlinkHref="#grid-background"
+                    width={ fieldWidth + 18 }
+                    height={ fieldHeight + 18 }
+                />
                 { _.map(cells, Cell) }
             </g>
             <use
