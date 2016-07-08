@@ -1,8 +1,8 @@
 import React from 'react';
-import createView from 'omniscient';
+import component from 'omniscient';
 import classNames from 'classnames';
 
-const Overlay = createView('Overlay', function (props) {
+const Overlay = component('Overlay', function (props) {
 
     const { winner } = props;
 

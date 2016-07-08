@@ -46,10 +46,12 @@ const PlayerView = createView('PlayerView', function (props) {
      * }
      */
 
-    return <g
-        key={ children[0] }
-        className={ 'TetrisGame-playerView TetrisGame-playerView-' + playerSide }
-        transform={ createTransform(children[0], fieldWidth, player.canvas) }>
+    return (
+        <g
+            key={ children[0] }
+            className={ 'TetrisGame-playerView TetrisGame-playerView-' + playerSide }
+            transform={ createTransform(children[0], fieldWidth, player.canvas) }
+        >
             <g className="TetrisGame-grid">
                 <g dangerouslySetInnerHTML={{
                     __html: `<use x="-8" y="-8" xlink:href="#grid-background" />`,
@@ -62,38 +64,62 @@ const PlayerView = createView('PlayerView', function (props) {
             <text
                 x={ playerNameX }
                 y="-50"
-                className="TetrisGame-playerInfo TetrisGame-playerName">{ name }</text>
+                className="TetrisGame-playerInfo TetrisGame-playerName"
+            >
+                { name }
+            </text>
             <text
                 x={ playerPointsX }
                 y="-40"
-                className="TetrisGame-playerInfo TetrisGame-playerPoints">{ points }</text>
+                className="TetrisGame-playerInfo TetrisGame-playerPoints"
+            >
+                { points }
+            </text>
             <text
                 x={ playerComboX }
                 y="212"
-                className="TetrisGame-playerInfo TetrisGame-playerCombo TetrisGame-playerCombo-text">{ 'Combo' }</text>
+                className="TetrisGame-playerInfo TetrisGame-playerCombo TetrisGame-playerCombo-text"
+            >
+                { 'Combo' }
+            </text>
             <text
                 x={ playerComboX }
                 y="240"
-                className="TetrisGame-playerInfo TetrisGame-playerCombo TetrisGame-playerCombo-combo">{ combo }</text>
+                className="TetrisGame-playerInfo TetrisGame-playerCombo TetrisGame-playerCombo-combo"
+            >
+                { combo }
+            </text>
             <text
                 x={ playerComboX }
                 y="280"
-                className="TetrisGame-playerInfo TetrisGame-playerSkips TetrisGame-playerSkips-text">{ 'Skips' }</text>
+                className="TetrisGame-playerInfo TetrisGame-playerSkips TetrisGame-playerSkips-text"
+            >
+                { 'Skips' }
+            </text>
             <text
                 x={ playerComboX }
                 y="308"
-                className="TetrisGame-playerInfo TetrisGame-playerSkips TetrisGame-playerSkips-skips">{ skips }</text>
-            <g dangerouslySetInnerHTML={{
-                __html: `<use x="${nextBackgroundX}" y="4" xlink:href="#next-block-${playerSide}" />`
-            }} />
-            <g dangerouslySetInnerHTML={{
-                __html: `<use x="${nextBlockX}" y="53" width="81" height="108" xlink:href="#shape-${nextShape}" />`
-            }} />
+                className="TetrisGame-playerInfo TetrisGame-playerSkips TetrisGame-playerSkips-skips"
+            >
+                { skips }
+            </text>
+            <use x={ nextBackgroundX } y="4" xlinkHref={ `#next-block-${playerSide}` } />
+            <use
+                x={ nextBlockX }
+                y="53"
+                width="81"
+                height="108"
+                xlinkHref={ `#shape-${nextShape}` }
+            />
             <text
                 x={ fieldWidth / 2 }
                 y={ fieldHeight + 42 }
-                className={ moveClass }>{ move }</text>
-        </g>;
+                className={ moveClass }
+            >
+                { move }
+            </text>
+        </g>
+    );
 });
 
 function createTransform(index, fieldWidth, canvas) {

@@ -1,7 +1,7 @@
 import React from 'react';
-import createView from 'omniscient';
+import component from 'omniscient';
 
-const Cell = createView(function (data) {
+const Cell = component(function (data) {
 
     /**
      * Data should have the following structure:
@@ -26,9 +26,7 @@ const Cell = createView(function (data) {
     }
 
     return (
-        <g dangerouslySetInnerHTML={{
-            __html: `<use x="${x}" y="${y}" xlink:href="${imgId}" />`,
-        }} />
+        <use x={ x } y={ y } xlinkHref={imgId} />
     );
 });
 
