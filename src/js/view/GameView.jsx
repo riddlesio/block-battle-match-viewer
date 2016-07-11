@@ -99,101 +99,372 @@ const GameView = createView('GameView', function (props) {
                         <path fill="#2F2F2F" d="M277,551H9c-2.2,0-4-1.8-4-4V9c0-2.2,1.8-4,4-4h268c2.2,0,4,1.8,4,4v538C281,549.2,279.2,551,277,551z"/>
                     </g>
                 </symbol>
-                <symbol id="block-0-light" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/grid-block-light.svg" />`,
-                }} />
-                <symbol id="block-0-dark" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/grid-block-dark.svg" />`,
-                }} />
-                <symbol id="block-I" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-I.svg" />`,
-                }} />
-                <symbol id="block-J" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-J.svg" />`,
-                }} />
-                <symbol id="block-L" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-L.svg" />`,
-                }} />
-                <symbol id="block-O" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-O.svg" />`,
-                }} />
-                <symbol id="block-S" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-S.svg" />`,
-                }} />
-                <symbol id="block-T" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-T.svg" />`,
-                }} />
-                <symbol id="block-Z" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-Z.svg" />`,
-                }} />
-                <symbol id="block-G" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-G.svg" />`,
-                }} />
-                <symbol id="block-I-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-I-nobkg.svg" />`,
-                }} />
-                <symbol id="block-J-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-J-nobkg.svg" />`,
-                }} />
-                <symbol id="block-L-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-L-nobkg.svg" />`,
-                }} />
-                <symbol id="block-O-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-O-nobkg.svg" />`,
-                }} />
-                <symbol id="block-S-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-S-nobkg.svg" />`,
-                }} />
-                <symbol id="block-T-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-T-nobkg.svg" />`,
-                }} />
-                <symbol id="block-Z-nobkg" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-Z-nobkg.svg" />`,
-                }} />
-                <symbol id="block-3" dangerouslySetInnerHTML={{
-                    __html: `<image width="${ cell.width }" height="${ cell.height }" xlink:href="./img/block-3.svg" />`,
-                }} />
+                <symbol id="block-0-light" viewBox="0 0 27 27">
+                    <g>
+                        <rect fill="#2F2F2F" width="27" height="27"/>
+                        <defs>
+                            <filter
+                                id="Adobe_OpacityMaskFilter"
+                                filterUnits="userSpaceOnUse"
+                                x="0"
+                                y="0"
+                                width="27"
+                                height="27"
+                            >
+                                <feColorMatrix
+                                    type="matrix"
+                                    values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0"
+                                    colorInterpolationFilters="sRGB"
+                                    result="source"
+                                />
+                            </filter>
+                        </defs>
+                        <mask
+                            maskUnits="userSpaceOnUse"
+                            x="0"
+                            y="0"
+                            width="27"
+                            height="27"
+                            id="GridBlockLight-mask"
+                        >
+                            <g filter="url(#Adobe_OpacityMaskFilter)">
+                                <image
+                                    overflow="visible"
+                                    width="31"
+                                    height="31"
+                                    xlinkHref="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEASABIAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMAEAMCAwYAAAGVAAAB2QAAAlL/2wCEABALCwsMCxAMDBAXDw0PFxsUEBAUGx8XFxcXFx8eFxoaGhoXHh4jJSclIx4vLzMzLy9AQEBAQEBAQEBAQEBAQEABEQ8PERMRFRISFRQRFBEUGhQWFhQaJhoaHBoaJjAjHh4eHiMwKy4nJycuKzU1MDA1NUBAP0BAQEBAQEBAQEBAQP/CABEIAB8AHwMBIgACEQEDEQH/xAB8AAEBAQEAAAAAAAAAAAAAAAAHBgACAQEAAAAAAAAAAAAAAAAAAAAAEAACAwEBAQAAAAAAAAAAAAABAgMEBQYgBxEAAQMCAwUJAAAAAAAAAAAAAQACAxEhsQQFMVFhkdEiQlKSorJDgyQSAQAAAAAAAAAAAAAAAAAAACD/2gAMAwEAAhEDEQAAAJiiyIHM6zHJ0iDNAIZ1p8//2gAIAQIAAQUA8f/aAAgBAwABBQDx/9oACAEBAAEFAMTEGmE+fxsJuBSNbuMK1/5+gaMAASKGTfQDouBmWNFkRhNMiJuzK3Q412/WCb/RATbvQsty5dku/wD/2gAIAQICBj8AH//aAAgBAwIGPwAf/9oACAEBAQY/AKmu2llWruZRPa5lQZW9JpGx+Y0Rr4jiqBEHctNG/NQ+8K57xxVQQiSRsWnOBsM1EfWF+WCSYV+Npdgrabmj9L+iIdp2aA4xP6KCWWCRkrJGuYxzSHOcDYAL/9k="
+                                    transform="matrix(1 0 0 1 -2 -2)"
+                                />
+                            </g>
+                        </mask>
+                        <g opacity="4.000000e-02" mask="url(#GridBlockLight-mask)">
+                            <rect fill="#FFFFFF" width="27" height="27"/>
+                        </g>
+                    </g>
+                    <polygon fill="#262626" points="1,26 0,26 0,1 1,1 "/>
+                    <polygon fill="#212121" points="27,26 0,26 0,27 27,27 "/>
+                    <polygon fill="#212121" points="27,26 26,26 26,1 27,1 "/>
+                    <polygon fill="#323232" points="26,1 0,1 0,0 26,0 "/>
+                    <polygon fill="#252525" points="27,1 26,1 26,0 27,0 "/>
+                </symbol>
+                <symbol id="block-0-dark" viewBox="0 0 27 27">
+                    <g>
+                        <rect fill="#2B2B2B" width="27" height="27"/>
+                        <defs>
+                            <filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="0" y="0" width="27" height="27">
+                                <feColorMatrix  type="matrix" values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0" colorInterpolationFilters="sRGB" result="source"/>
+                            </filter>
+                        </defs>
+                        <mask maskUnits="userSpaceOnUse" x="0" y="0" width="27" height="27" id="SVGID_1_">
+                            <g filter="url(#Adobe_OpacityMaskFilter)">
+                                <image
+                                    overflow="visible"
+                                    width="31"
+                                    height="31"
+                                    xlinkHref="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEASABIAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMAEAMCAwYAAAGVAAAB2QAAAlL/2wCEABALCwsMCxAMDBAXDw0PFxsUEBAUGx8XFxcXFx8eFxoaGhoXHh4jJSclIx4vLzMzLy9AQEBAQEBAQEBAQEBAQEABEQ8PERMRFRISFRQRFBEUGhQWFhQaJhoaHBoaJjAjHh4eHiMwKy4nJycuKzU1MDA1NUBAP0BAQEBAQEBAQEBAQP/CABEIAB8AHwMBIgACEQEDEQH/xAB8AAEBAQEAAAAAAAAAAAAAAAAHBgACAQEAAAAAAAAAAAAAAAAAAAAAEAACAwEBAQAAAAAAAAAAAAABAgMEBQYgBxEAAQMCAwUJAAAAAAAAAAAAAQACAxEhsQQFMVFhkdEiQlKSorJDgyQSAQAAAAAAAAAAAAAAAAAAACD/2gAMAwEAAhEDEQAAAJiiyIHM6zHJ0iDNAIZ1p8//2gAIAQIAAQUA8f/aAAgBAwABBQDx/9oACAEBAAEFAMTEGmE+fxsJuBSNbuMK1/5+gaMAASKGTfQDouBmWNFkRhNMiJuzK3Q412/WCb/RATbvQsty5dku/wD/2gAIAQICBj8AH//aAAgBAwIGPwAf/9oACAEBAQY/AKmu2llWruZRPa5lQZW9JpGx+Y0Rr4jiqBEHctNG/NQ+8K57xxVQQiSRsWnOBsM1EfWF+WCSYV+Npdgrabmj9L+i/9k="
+                                    transform="matrix(1 0 0 1 -2 -2)"
+                                />
+                            </g>
+                        </mask>
+                        <g opacity="4.000000e-02" mask="url(#SVGID_1_)">
+                            <rect fill="#FFFFFF" width="27" height="27"/>
+                        </g>
+                    </g>
+                    <polygon fill="#212121" points="26,27 0,27 0,26 26,26 "/>
+                    <polygon fill="#212121" points="27,27 26,27 26,1 27,1 "/>
+                    <polygon fill="#2E2E2E" points="26,1 0,1 0,0 26,0 "/>
+                    <polygon fill="#262626" points="0,26 1,26 1,1 0,1 "/>
+                    <polygon fill="#212121" points="27,1 26,1 26,0 27,0 "/>
+                </symbol>
+                <symbol id="block-I" viewBox="0 0 27 27">
+                    <g>
+                        <g>
+                            <g>
+                                <rect fill="#2F2F2F" width="27" height="27"/>
+                            </g>
+                            <g opacity="4.000000e-02">
+                                <rect fill="#FFFFFF" width="27" height="27"/>
+                            </g>
+                        </g>
+                        <polygon fill="#262626" points="1,26 0,26 0,1 1,1       "/>
+                        <polygon fill="#212121" points="27,26 0,26 0,27 27,27       "/>
+                        <polygon fill="#212121" points="27,26 26,26 26,1 27,1       "/>
+                        <polygon fill="#323232" points="26,1 0,1 0,0 26,0       "/>
+                        <polygon fill="#252525" points="27,1 26,1 26,0 27,0         "/>
+                    </g>
+                    <g>
+                        <path fill="#76d518" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#0d6023" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#53ac03" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-J" viewBox="0 0 27 27">
+                    <g>
+                        <g>
+                            <g>
+                                <rect fill="#2F2F2F" width="27" height="27"/>
+                            </g>
+                            <g opacity="4.000000e-02">
+                                <rect fill="#FFFFFF" width="27" height="27"/>
+                            </g>
+                        </g>
+                        <polygon fill="#262626" points="1,26 0,26 0,1 1,1       "/>
+                        <polygon fill="#212121" points="27,26 0,26 0,27 27,27       "/>
+                        <polygon fill="#212121" points="27,26 26,26 26,1 27,1       "/>
+                        <polygon fill="#323232" points="26,1 0,1 0,0 26,0       "/>
+                        <polygon fill="#252525" points="27,1 26,1 26,0 27,0         "/>
+                    </g>
+                    <g>
+                        <path fill="#fac409" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#772a00" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#f47b02" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-L" viewBox="0 0 27 27">
+                    <g>
+                        <g>
+                            <g>
+                                <rect fill="#2F2F2F" width="27" height="27"/>
+                            </g>
+                            <g opacity="4.000000e-02">
+                                <rect fill="#FFFFFF" width="27" height="27"/>
+                            </g>
+                        </g>
+                        <polygon fill="#262626" points="1,26 0,26 0,1 1,1       "/>
+                        <polygon fill="#212121" points="27,26 0,26 0,27 27,27       "/>
+                        <polygon fill="#212121" points="27,26 26,26 26,1 27,1       "/>
+                        <polygon fill="#323232" points="26,1 0,1 0,0 26,0       "/>
+                        <polygon fill="#252525" points="27,1 26,1 26,0 27,0         "/>
+                    </g>
+                    <g>
+                        <path fill="#df2697" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#740053" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#b41974" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-O" viewBox="0 0 27 27">
+                    <g>
+                        <g>
+                            <g>
+                                <rect fill="#2F2F2F" width="27" height="27"/>
+                            </g>
+                            <g opacity="4.000000e-02">
+                                <rect fill="#FFFFFF" width="27" height="27"/>
+                            </g>
+                        </g>
+                        <polygon fill="#262626" points="1,26 0,26 0,1 1,1       "/>
+                        <polygon fill="#212121" points="27,26 0,26 0,27 27,27       "/>
+                        <polygon fill="#212121" points="27,26 26,26 26,1 27,1       "/>
+                        <polygon fill="#323232" points="26,1 0,1 0,0 26,0       "/>
+                        <polygon fill="#252525" points="27,1 26,1 26,0 27,0         "/>
+                    </g>
+                    <g>
+                        <path fill="#3690ec" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#002885" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#1a52d6" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-S" viewBox="0 0 27 27">
+                    <g>
+                        <g>
+                            <g>
+                                <rect fill="#2F2F2F" width="27" height="27"/>
+                            </g>
+                            <g opacity="4.000000e-02">
+                                <rect fill="#FFFFFF" width="27" height="27"/>
+                            </g>
+                        </g>
+                        <polygon fill="#262626" points="1,26 0,26 0,1 1,1       "/>
+                        <polygon fill="#212121" points="27,26 0,26 0,27 27,27       "/>
+                        <polygon fill="#212121" points="27,26 26,26 26,1 27,1       "/>
+                        <polygon fill="#323232" points="26,1 0,1 0,0 26,0       "/>
+                        <polygon fill="#252525" points="27,1 26,1 26,0 27,0         "/>
+                    </g>
+                    <g>
+                        <path fill="#46ebff" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#047680" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#12a3e8" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-T" viewBox="0 0 27 27">
+                    <g>
+                        <g>
+                            <g>
+                                <rect fill="#2F2F2F" width="27" height="27"/>
+                            </g>
+                            <g opacity="4.000000e-02">
+                                <rect fill="#FFFFFF" width="27" height="27"/>
+                            </g>
+                        </g>
+                        <polygon fill="#262626" points="1,26 0,26 0,1 1,1       "/>
+                        <polygon fill="#212121" points="27,26 0,26 0,27 27,27       "/>
+                        <polygon fill="#212121" points="27,26 26,26 26,1 27,1       "/>
+                        <polygon fill="#323232" points="26,1 0,1 0,0 26,0       "/>
+                        <polygon fill="#252525" points="27,1 26,1 26,0 27,0         "/>
+                    </g>
+                    <g>
+                        <path fill="#ecdf09" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#7f6b00" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#d5b715" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-Z" viewBox="0 0 27 27">
+                    <g>
+                        <g>
+                            <g>
+                                <rect fill="#2F2F2F" width="27" height="27"/>
+                            </g>
+                            <g opacity="4.000000e-02">
+                                <rect fill="#FFFFFF" width="27" height="27"/>
+                            </g>
+                        </g>
+                        <polygon fill="#262626" points="1,26 0,26 0,1 1,1       "/>
+                        <polygon fill="#212121" points="27,26 0,26 0,27 27,27       "/>
+                        <polygon fill="#212121" points="27,26 26,26 26,1 27,1       "/>
+                        <polygon fill="#323232" points="26,1 0,1 0,0 26,0       "/>
+                        <polygon fill="#252525" points="27,1 26,1 26,0 27,0         "/>
+                    </g>
+                    <g>
+                        <path fill="#f72039" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#9e0c29" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#d70f37" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-G" viewBox="0 0 27 27">
+                    <g>
+                        <g>
+                            <g>
+                                <rect fill="#2F2F2F" width="27" height="27"/>
+                            </g>
+                            <g opacity="4.000000e-02">
+                                <rect fill="#FFFFFF" width="27" height="27"/>
+                            </g>
+                        </g>
+                        <polygon fill="#262626" points="1,26 0,26 0,1 1,1       "/>
+                        <polygon fill="#212121" points="27,26 0,26 0,27 27,27       "/>
+                        <polygon fill="#212121" points="27,26 26,26 26,1 27,1       "/>
+                        <polygon fill="#323232" points="26,1 0,1 0,0 26,0       "/>
+                        <polygon fill="#252525" points="27,1 26,1 26,0 27,0         "/>
+                    </g>
+                    <g>
+                        <path fill="#8C6E4A" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#6B563D" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#795D3A" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-I-nobkg" viewBox="0 0 27 27">
+                    <g>
+                        <path fill="#76d518" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#0d6023" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#53ac03" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-J-nobkg" viewBox="0 0 27 27">
+                    <g>
+                        <path fill="#fac409" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#772a00" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#f47b02" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-L-nobkg" viewBox="0 0 27 27">
+                    <g>
+                        <path fill="#df2697" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#740053" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#b41974" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-O-nobkg" viewBox="0 0 27 27">
+                    <g>
+                        <path fill="#3690ec" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#002885" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#1a52d6" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-S-nobkg" viewBox="0 0 27 27">
+                    <g>
+                        <path fill="#46ebff" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#047680" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#12a3e8" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-T-nobkg" viewBox="0 0 27 27">
+                    <g>
+                        <path fill="#ecdf09" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#7f6b00" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#d5b715" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-Z-nobkg" viewBox="0 0 27 27">
+                    <g>
+                        <path fill="#f72039" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#9e0c29" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#d70f37" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
+                <symbol id="block-3" viewBox="0 0 27 27">
+                    <g>
+                        <g>
+                            <g>
+                                <rect fill="#2F2F2F" width="27" height="27"/>
+                            </g>
+                            <g opacity="4.000000e-02">
+                                <rect fill="#FFFFFF" width="27" height="27"/>
+                            </g>
+                        </g>
+                        <polygon fill="#262626" points="1,26 0,26 0,1 1,1       "/>
+                        <polygon fill="#212121" points="27,26 0,26 0,27 27,27       "/>
+                        <polygon fill="#212121" points="27,26 26,26 26,1 27,1       "/>
+                        <polygon fill="#323232" points="26,1 0,1 0,0 26,0       "/>
+                        <polygon fill="#252525" points="27,1 26,1 26,0 27,0         "/>
+                    </g>
+                    <g>
+                        <path fill="#151515" d="M5,26.5c-2.5,0-4.5-2-4.5-4.5V5c0-2.5,2-4.5,4.5-4.5h17c2.5,0,4.5,2,4.5,4.5v17c0,2.5-2,4.5-4.5,4.5H5z"/>
+                        <path fill="#0a0a0a" d="M22,1c2.2,0,4,1.8,4,4v17c0,2.2-1.8,4-4,4H5c-2.2,0-4-1.8-4-4V5c0-2.2,1.8-4,4-4H22 M22,0H5
+            C2.2,0,0,2.2,0,5v17c0,2.8,2.2,5,5,5h17c2.8,0,5-2.2,5-5V5C27,2.2,24.8,0,22,0L22,0z"/>
+                    </g>
+                    <path fill="#0e0e0e" d="M21,19c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h11c1.1,0,2,0.9,2,2V19z"/>
+                </symbol>
                 <symbol id='shape-I' viewBox={ "0 0 " + (cell.width * 3) + " " + (cell.height * 4) }>
-                    <use x={ cell.width } y="0" xlinkHref="#block-I-nobkg" />
-                    <use x={ cell.width } y={ cell.height } xlinkHref="#block-I-nobkg" />
-                    <use x={ cell.width } y={ cell.height * 2 } xlinkHref="#block-I-nobkg" />
-                    <use x={ cell.width } y={ cell.height * 3 } xlinkHref="#block-I-nobkg" />
+                    <use x={ cell.width } y="0" width={ cell.width } height={ cell.height } xlinkHref="#block-I-nobkg" />
+                    <use x={ cell.width } y={ cell.height } width={ cell.width } height={ cell.height } xlinkHref="#block-I-nobkg" />
+                    <use x={ cell.width } y={ cell.height * 2 } width={ cell.width } height={ cell.height } xlinkHref="#block-I-nobkg" />
+                    <use x={ cell.width } y={ cell.height * 3 } width={ cell.width } height={ cell.height } xlinkHref="#block-I-nobkg" />
                 </symbol>
                 <symbol id='shape-J' viewBox={ "0 0 " + (cell.width * 3) + " " + (cell.height * 4) }>
-                    <use x={ cell.width * 1.5 } y={ cell.height * 0.5 } xlinkHref="#block-J-nobkg" />
-                    <use x={ cell.width * 1.5 } y={ cell.height * 1.5 } xlinkHref="#block-J-nobkg" />
-                    <use x={ cell.width * 1.5 } y={ cell.height * 2.5 } xlinkHref="#block-J-nobkg" />
-                    <use x={ cell.width * 0.5 } y={ cell.height * 2.5 } xlinkHref="#block-J-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 0.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-J-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 1.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-J-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 2.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-J-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 2.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-J-nobkg" />
                 </symbol>
                 <symbol id='shape-L' viewBox={ "0 0 " + (cell.width * 3) + " " + (cell.height * 4) }>
-                    <use x={ cell.width * 0.5 } y={ cell.height * 0.5 } xlinkHref="#block-L-nobkg" />
-                    <use x={ cell.width * 0.5 } y={ cell.height * 1.5 } xlinkHref="#block-L-nobkg" />
-                    <use x={ cell.width * 0.5 } y={ cell.height * 2.5 } xlinkHref="#block-L-nobkg" />
-                    <use x={ cell.width * 1.5 } y={ cell.height * 2.5 } xlinkHref="#block-L-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 0.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-L-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 1.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-L-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 2.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-L-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 2.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-L-nobkg" />
                 </symbol>
                 <symbol id='shape-O' viewBox={ "0 0 " + (cell.width * 3) + " " + (cell.height * 4) }>
-                    <use x={ cell.width * 0.5 } y={ cell.height } xlinkHref="#block-O-nobkg" />
-                    <use x={ cell.width * 0.5 } y={ cell.height * 2 } xlinkHref="#block-O-nobkg" />
-                    <use x={ cell.width * 1.5 } y={ cell.height } xlinkHref="#block-O-nobkg" />
-                    <use x={ cell.width * 1.5 } y={ cell.height * 2 } xlinkHref="#block-O-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height } width={ cell.width } height={ cell.height } xlinkHref="#block-O-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 2 } width={ cell.width } height={ cell.height } xlinkHref="#block-O-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height } width={ cell.width } height={ cell.height } xlinkHref="#block-O-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 2 } width={ cell.width } height={ cell.height } xlinkHref="#block-O-nobkg" />
                 </symbol>
                 <symbol id='shape-S' viewBox={ "0 0 " + (cell.width * 3) + " " + (cell.height * 4) }>
-                    <use x={ cell.width * 0.5 } y={ cell.height * 0.5 } xlinkHref="#block-S-nobkg" />
-                    <use x={ cell.width * 0.5 } y={ cell.height * 1.5 } xlinkHref="#block-S-nobkg" />
-                    <use x={ cell.width * 1.5 } y={ cell.height * 1.5 } xlinkHref="#block-S-nobkg" />
-                    <use x={ cell.width * 1.5 } y={ cell.height * 2.5 } xlinkHref="#block-S-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 0.5 }  width={ cell.width } height={ cell.height }xlinkHref="#block-S-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 1.5 }  width={ cell.width } height={ cell.height }xlinkHref="#block-S-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 1.5 }  width={ cell.width } height={ cell.height }xlinkHref="#block-S-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 2.5 }  width={ cell.width } height={ cell.height }xlinkHref="#block-S-nobkg" />
                 </symbol>
                 <symbol id='shape-T' viewBox={ "0 0 " + (cell.width * 3) + " " + (cell.height * 4) }>
-                    <use x={ cell.width * 0.5 } y={ cell.height * 0.5 } xlinkHref="#block-T-nobkg" />
-                    <use x={ cell.width * 0.5 } y={ cell.height * 1.5 } xlinkHref="#block-T-nobkg" />
-                    <use x={ cell.width * 0.5 } y={ cell.height * 2.5 } xlinkHref="#block-T-nobkg" />
-                    <use x={ cell.width * 1.5 } y={ cell.height * 1.5 } xlinkHref="#block-T-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 0.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-T-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 1.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-T-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 2.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-T-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 1.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-T-nobkg" />
                 </symbol>
                 <symbol id="shape-Z" viewBox={ "0 0 " + (cell.width * 3) + " " + (cell.height * 4) }>
-                    <use x={ cell.width * 1.5 } y={ cell.height * 0.5 } xlinkHref="#block-Z-nobkg" />
-                    <use x={ cell.width * 1.5 } y={ cell.height * 1.5 } xlinkHref="#block-Z-nobkg" />
-                    <use x={ cell.width * 0.5 } y={ cell.height * 1.5 } xlinkHref="#block-Z-nobkg" />
-                    <use x={ cell.width * 0.5 } y={ cell.height * 2.5 } xlinkHref="#block-Z-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 0.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-Z-nobkg" />
+                    <use x={ cell.width * 1.5 } y={ cell.height * 1.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-Z-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 1.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-Z-nobkg" />
+                    <use x={ cell.width * 0.5 } y={ cell.height * 2.5 } width={ cell.width } height={ cell.height } xlinkHref="#block-Z-nobkg" />
                 </symbol>
             </defs>
             <text x="50%" y="75" className="TetrisGame-currentRound">{ 'Round ' + round }</text>

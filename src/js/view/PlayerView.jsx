@@ -34,6 +34,8 @@ const PlayerView = createView('PlayerView', function (props) {
         playerComboX = fieldWidth + 17;
     }
 
+    console.log(nextShape);
+
     /**
      * Data should have the following structure:
      * {

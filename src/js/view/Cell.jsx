@@ -14,7 +14,7 @@ const Cell = component(function (data) {
      * }
      */
 
-    const { row, column, x, y, cellType } = data;
+    const { width, height, row, column, x, y, cellType } = data;
     let imgId = '#block-' + cellType;
 
     if (cellType === '0') {
@@ -26,7 +26,7 @@ const Cell = component(function (data) {
     }
 
     return (
-        <use x={ x } y={ y } xlinkHref={imgId} />
+        <use x={ x } y={ y } width={ width } height={ height } xlinkHref={imgId} />
     );
 });
 
