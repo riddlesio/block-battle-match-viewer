@@ -44,13 +44,13 @@ function parseStates(data, settings) {
     const fieldWidth        = fieldSettings.width;
     const { width, height } = fieldSettings.cell;
 
-    return _.map(data.states, function (state) {
+    return _.map(data.states, function (state, index) {
 
         const { players, round, nextShape } = state;
-        let { winner } = state;
-
-        if (winner) {
-            winner = settings.players.names[parseInt(winner.replace('player', '')) - 1];
+        let winner = undefined;
+        
+        if (index === data.states.length - 1) {
+            winner = state.winner ? settings.players.names[parseInt(winner.replace('player', '')) - 1] : 'none';
         }
 
         return {
