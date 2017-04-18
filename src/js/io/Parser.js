@@ -16,48 +16,23 @@ function parsePlayerNames(playerData, settings) {
     return settings;
 }
 
-// function parseMoveSet(states) {
-//
-//     let currentRound;
-//
-//     return _
-//         .chain(states)
-//         .map(function (state, index) {
-//
-//             let label;
-//             const { round } = state;
-//
-//             if (currentRound === round) return false;
-//
-//             currentRound = round;
-//             label = `Round ${round}`;
-//
-//             return { label, value: index };
-//         })
-//         .compact()
-//         .value();
-// }
-
 function parseStates(data, settings) {
 
-    const fieldSettings     = settings.field;
-    const fieldWidth        = fieldSettings.width;
-    const { width, height } = fieldSettings.cell;
+    const fieldSettings      = settings.field;
+    const fieldWidth         = fieldSettings.width;
+    const { width, height }  = fieldSettings.cell;
+    const { winner, states } = data;
+    const playerNames        = settings.players.names;
 
-    return _.map(data.states, function (state, index) {
+    const parsedStates = states.map(state => {
 
         const { players, round, nextShape } = state;
-        let winner = undefined;
-        
-        if (index === data.states.length - 1) {
-            winner = state.winner ? settings.players.names[parseInt(winner.replace('player', '')) - 1] : 'none';
-        }
 
         return {
             round,
             nextShape,
-            winner,
-            players: _.map(players, function (player) {
+            winner: null,
+            players: players.map(player => {
 
                 const { field, combo, skips, points, move } = player;
 
@@ -66,8 +41,7 @@ function parseStates(data, settings) {
                     skips,
                     points,
                     move,
-                    cells: _
-                        .chain(field)
+                    cells: _.chain(field)
                         .thru((string) => string.split(/,|;/))
                         .map(function (cellType, index) {
                             const row    = Math.floor(index / fieldWidth);
@@ -82,6 +56,10 @@ function parseStates(data, settings) {
             }),
         };
     });
+
+    parsedStates[parsedStates.length - 1].winner = winner !== null ? playerNames[winner] : null;
+
+    return parsedStates;
 }
 
 export {
