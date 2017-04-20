@@ -14,14 +14,12 @@ const GameView = createView('GameView', function (props) {
     const fieldWidth = field.width * cell.width;
     const fieldHeight = field.height * cell.height;
 
-    let playerView = [];
-
-    _.forEach(players, function (player) {
-        playerView.push(_.assign({
-            settings: settings,
-            nextShape: nextShape,
-        }, player));
-    });
+    const playerView = players.map((player, index) => ({
+        ...player,
+        settings,
+        nextShape,
+        key: index
+    }));
 
     /**
      * Data should have the following structure:

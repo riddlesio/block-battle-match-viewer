@@ -49,7 +49,7 @@ function parseStates(data, settings) {
                             const x      = column * width;
                             const y      = row * height;
 
-                            return { row, column, x, y, width, height, cellType };
+                            return { key: index, row, column, x, y, width, height, cellType };
                         })
                         .value(),
                 };
